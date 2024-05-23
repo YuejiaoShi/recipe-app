@@ -27,6 +27,7 @@ header {
 footer .bg-secondary {
     background-color: #CA8787 !important;
 }
+
 .navbar .navbar-nav .nav-link:hover {
     color: #fbc531;
 }
@@ -138,16 +139,20 @@ aside {
 }
 
 .send-email,
-.related-recipes {
-    background: white;
-    padding: 1rem;
-    border: 1px solid #ddd;
+.related-recipes,
+#new-recipe-form {
+    padding: 20px;
+    background-color: #f9f9f9;
     border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin-top: 2rem;
 }
 
 .send-email h3,
-.related-recipes h3 {
+.related-recipes h3,
+#new-recipe-form h3 {
     margin-top: 0;
+    text-align: center;
 }
 
 .send-email form {
@@ -178,6 +183,7 @@ aside {
 .related-recipes ul {
     padding: 0;
     list-style: none;
+    text-align: center;
 }
 
 .related-recipes li {
@@ -187,8 +193,38 @@ aside {
 .related-recipes a {
     color: #500110;
 
-}
+}git add
 
 .related-recipes a:hover {
     color: #CA8787;
+}
+
+
+#new-recipe-form label {
+    font-weight: bold;
+}
+
+
+#new-recipe-form input[type="text"],
+#new-recipe-form input[type="url"],
+#new-recipe-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#new-recipe-form button {
+    padding: 0.5rem;
+    background-color: #500110;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#new-recipe-form button:hover {
+    background-color: #CA8787;
 }

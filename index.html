@@ -57,12 +57,6 @@
                     </ul>
                 </section>
 
-                <section id="ingredient-notes">
-                    <h3>Ingredient Notes</h3>
-                    <ul>
-                        <!-- Ingredient notes from JavaScript -->
-                    </ul>
-                </section>
 
                 <section id="preparation">
                     <h3>Preparation Steps</h3>
@@ -71,10 +65,8 @@
                     </ul>
                 </section>
 
-                <section id="garnishes">
-                    <h3>Garnishes</h3>
-                    <p><!-- Garnishes from JavaScript --></p>
-                </section>
+
+
             </article>
 
             <aside id="sidebar">
@@ -93,6 +85,18 @@
                         <li><a href="#">Frikadeller</a></li>
                         <li><a href="#">Æbleskiver</a></li>
                     </ul>
+                </div>
+                <div id="new-recipe-form">
+                    <h3>Add Ingredients</h3>
+                    <form id="new-recipe-form">
+                        <label for="ingredient-name">Ingredient Name:</label><br>
+                        <input type="text" id="ingredient-name" name="title" required><br><br>
+
+                        <label for="ingredient-amount">Ingredient Amount:</label><br>
+                        <input type="text" id="ingredient-amount" name="title" required><br><br>
+
+                        <button type="submit">Add Recipe</button>
+                    </form>
                 </div>
             </aside>
         </section>
