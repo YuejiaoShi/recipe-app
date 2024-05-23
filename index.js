@@ -17,22 +17,25 @@ const recipeObject = {
     "Flæskesteg, a Danish Crisp Pork, is a cherished dish deeply rooted in Danish culinary tradition. It's not just a meal; it's a centerpiece of celebration, often enjoyed during holidays like Christmas. This dish boasts a succulent pork roast with a perfectly crispy and crackling skin, making it a delight for both the palate and the senses.",
   ingredients: [
     "2 kg pork roast with skin (preferably from the neck or loin)",
-    "Coarse sea salt",
+    "20 grams Coarse sea salt",
     "1 cup boiling water",
   ],
   ingredientNotes: [
     {
       title: "Pork Roast",
+      amount: "2 kg",
       description:
         "Select a pork roast with a thick layer of skin, preferably from the neck or loin. This ensures optimal crackling. If possible, ask your butcher to score the skin in a diamond pattern.",
     },
     {
       title: "Coarse Sea Salt",
+      amount: "20 grams",
       description:
         "Coarse sea salt is essential for seasoning the pork and aiding in the formation of crispy crackling. Rubbing salt into the scored skin ensures even seasoning and helps draw out moisture for a crispy finish.",
     },
     {
       title: "Boiling Water",
+      amount: "500 ml",
       description:
         "Pouring boiling water over the pork before roasting creates steam, which assists in achieving a crispy skin. This step is crucial for Flæskesteg preparation.",
     },
@@ -121,7 +124,7 @@ function setPreparationSteps() {
 function setGarnishes() {
   const garnishesList = document.querySelector("#garnishes p");
 
-  if (garnishesList) {
+  if (garnishesList && recipeObject.garnishes) {
     recipeObject.garnishes.forEach((garnish, index) => {
       const garnishesCount = recipeObject.garnishes.length;
       const span = document.createElement("span");
