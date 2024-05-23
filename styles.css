@@ -1,0 +1,151 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+header {
+    background-color: #500110;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+}
+
+#recipe-content {
+    display: flex;
+    max-width: 1200px;
+    width: 100%;
+    gap: 2rem;
+}
+
+#recipe-details {
+    flex: 3;
+}
+
+#recipe-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.recipe-meta {
+    color: #888;
+    margin-bottom: 1rem;
+}
+
+#recipe-image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    object-position: center;
+}
+
+#recipe-description {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+#recipe-ingredients ul {
+    list-style: disc;
+    margin-left: 1rem;
+}
+
+#ingredient-notes,
+#garnishes {
+    margin-top: 2rem;
+}
+
+#ingredient-notes h3,
+#garnishes h3 {
+    margin-top: 1rem;
+
+}
+
+#ingredient-notes ul {
+    list-style: none;
+    padding-left: 0;
+}
+#preparation ul {
+    padding-left: 1rem;
+}
+
+#ingredient-notes ul li,
+#garnishes ul li {
+    margin-bottom: 1rem;
+}
+
+#ingredient-notes ul li strong,
+#garnishes ul li strong {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+aside {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.send-email,
+.related-recipes {
+    background: white;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.send-email h3,
+.related-recipes h3 {
+    margin-top: 0;
+}
+
+.send-email form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.send-email input {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.send-email button {
+    padding: 0.5rem;
+    background-color: #500110;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.send-email button:hover {
+    background-color: #ab544b;
+}
+
+.related-recipes ul {
+    padding: 0;
+    list-style: none;
+}
+
+.related-recipes li {
+    margin: 0.5rem 0;
+}
+
+.related-recipes a {
+    color: #500110;
+
+}
+
+.related-recipes a:hover {
+    color: #BF877A;
+}
