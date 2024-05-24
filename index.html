@@ -44,11 +44,11 @@
     <main>
         <section id="recipe-content">
             <article id="recipe-details">
-                <h2 id="recipe-title">Recipe Title Placeholder</h2>
+                <h2 id="recipe-title"></h2>
                 <p class="recipe-meta">Published: <span>Aug 13</span> | Updated: <span>Oct 13</span> | <span>108
                         Comments</span></p>
                 <img id="recipe-image" src="#" alt="Recipe Image Placeholder">
-                <p id="recipe-description">Recipe description placeholder.</p>
+                <p id="recipe-description"></p>
 
                 <section id="recipe-ingredients">
                     <h3>Ingredients</h3>
@@ -65,6 +65,30 @@
                     </ul>
                 </section>
 
+                <div id="new-recipe-form">
+                    <h2>Add New Recipe</h2>
+                    <form id="new-recipe-form">
+                        <label for="title">Title:</label><br>
+                        <input type="text" id="title" name="title" required><br><br>
+
+                        <label for="image-url">Image URL:</label><br>
+                        <input type="url" id="image-url" name="image-url" required><br><br>
+
+                        <label for="description">Description:</label><br>
+                        <textarea id="description" name="description" rows="4" cols="50" required></textarea><br><br>
+
+                        <label for="ingredients">Ingredients (minimum 5):</label><br>
+                        <textarea id="ingredients" name="ingredients" rows="6" cols="50"
+                            placeholder="Please use 'Ingredient Name: Amount' format. Hit enter before writing another ingredient"
+                            required></textarea><br><br>
+
+                        <label for="preparation-steps">Preparation Steps:</label><br>
+                        <textarea id="preparation-steps" name="preparation-steps" rows="6" cols="50"
+                            required></textarea><br><br>
+
+                        <button type="submit">Add Recipe</button>
+                    </form>
+                </div>
 
 
             </article>
@@ -86,9 +110,9 @@
                         <li><a href="#">Æbleskiver</a></li>
                     </ul>
                 </div>
-                <div id="new-recipe-form">
+                <div id="new-ingredient-form">
                     <h3>Add Ingredients</h3>
-                    <form id="new-recipe-form">
+                    <form id="new-ingredient-form">
                         <label for="ingredient-name">Ingredient Name:</label><br>
                         <input type="text" id="ingredient-name" name="title" required><br><br>
 

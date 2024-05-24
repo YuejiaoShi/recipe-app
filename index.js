@@ -4,6 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+
+
 function setRecipe(recipe) {
   setRecipeTitle(recipe);
   setRecipeImage(recipe);
@@ -83,6 +85,7 @@ function setIngredients(recipe) {
 
 function setPreparationSteps(recipe) {
   const preparationStepsList = document.querySelector("#preparation ul");
+  preparationStepsList.innerHTML = "";
   if (preparationStepsList) {
     recipe.preparationSteps.forEach((step) => {
       const li = document.createElement("li");
@@ -94,9 +97,11 @@ function setPreparationSteps(recipe) {
   }
 }
 
-const newRecipeForm = document.getElementById("new-recipe-form");
-if (newRecipeForm) {
-  newRecipeForm.addEventListener("submit", (event) => {
+
+
+const newIngredientForm = document.getElementById("new-ingredient-form");
+if (newIngredientForm) {
+  newIngredientForm.addEventListener("submit", (event) => {
     event.preventDefault();
 
     const newIngredientName = document.getElementById("ingredient-name").value;
@@ -108,8 +113,8 @@ if (newRecipeForm) {
       return;
     }
 
-    const existingRecipe = recipeObject[0];
-    existingRecipe.ingredients.push({
+    const currentRecipe = recipeObject[recipeObject.length - 1];
+    currentRecipe.ingredients.push({
       NAME: newIngredientName,
       AMOUNT: newIngredientAmount,
     });
@@ -117,8 +122,82 @@ if (newRecipeForm) {
     document.getElementById("ingredient-name").value = "";
     document.getElementById("ingredient-amount").value = "";
 
-    setIngredients(existingRecipe);
+    setIngredients(currentRecipe);
   });
 } else {
   console.error("Element #new-recipe-form not found");
+}
+
+
+
+
+function addNewRecipe(newRecipeData) {
+  const newRecipe = {
+    id: recipeObject.length + 1,
+    title: newRecipeData.title,
+    picture_url: newRecipeData.imageUrl,
+    description: newRecipeData.description,
+    ingredients: newRecipeData.ingredients,
+    preparationSteps: newRecipeData.preparationSteps,
+  };
+
+  recipeObject.push(newRecipe);
+
+  setRecipe(newRecipe);
+}
+
+const newRecipeForm = document.getElementById("new-recipe-form");
+if (newRecipeForm) {
+  newRecipeForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const title = document.getElementById("title").value;
+    const imageUrl = document.getElementById("image-url").value;
+    const description = document.getElementById("description").value;
+    const ingredientsInput = document
+      .getElementById("ingredients")
+      .value.split("\n");
+    const preparationSteps = document
+      .getElementById("preparation-steps")
+      .value.split("\n");
+
+    if (ingredientsInput.length < 5) {
+      alert("Please provide at least 5 ingredients.");
+      return;
+    }
+
+    const ingredients = [];
+
+    ingredientsInput.forEach((ingredientLine) => {
+      const parts = ingredientLine.split(":");
+
+      if (parts.length !== 2) {
+        alert(
+          "Invalid ingredient format. Please use 'Ingredient Name: Amount' format."
+        );
+        return;
+      }
+
+      const name = parts[0].trim();
+      const amount = parts[1].trim();
+
+      ingredients.push({ NAME: name, AMOUNT: amount });
+    });
+
+    const newRecipeData = {
+      id: recipeObject.length + 1,
+      title,
+      imageUrl,
+      description,
+      ingredients,
+      preparationSteps,
+    };
+    console.log(recipeObject);
+    addNewRecipe(newRecipeData);
+    document.getElementById("title").value = "";
+    document.getElementById("image-url").value = "";
+    document.getElementById("description").value = "";
+    document.getElementById("ingredients").value = "";
+    document.getElementById("preparation-steps").value = "";
+  });
 }

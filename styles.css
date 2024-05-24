@@ -58,8 +58,8 @@ main {
     justify-content: center;
     padding: 2rem;
     justify-content: center;
+    min-width:1264px;
     margin: 0 auto;
-
 }
 
 #recipe-content {
@@ -100,36 +100,11 @@ main {
     margin-left: 1rem;
 }
 
-#ingredient-notes,
-#garnishes {
-    margin-top: 2rem;
-}
-
-#ingredient-notes h3,
-#garnishes h3 {
-    margin-top: 1rem;
-
-}
-
-#ingredient-notes ul {
-    list-style: none;
-    padding-left: 0;
-}
 
 #preparation ul {
     padding-left: 1rem;
 }
 
-#ingredient-notes ul li,
-#garnishes ul li {
-    margin-bottom: 1rem;
-}
-
-#ingredient-notes ul li strong {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-}
 
 aside {
     flex: 1;
@@ -140,7 +115,8 @@ aside {
 
 .send-email,
 .related-recipes,
-#new-recipe-form {
+#new-recipe-form,
+#new-ingredient-form {
     padding: 20px;
     background-color: #f9f9f9;
     border-radius: 5px;
@@ -150,7 +126,8 @@ aside {
 
 .send-email h3,
 .related-recipes h3,
-#new-recipe-form h3 {
+#new-recipe-form h3,
+#new-ingredient-form h3 {
     margin-top: 0;
     text-align: center;
 }
@@ -193,21 +170,26 @@ aside {
 .related-recipes a {
     color: #500110;
 
-}git add
+}
 
 .related-recipes a:hover {
     color: #CA8787;
 }
 
 
-#new-recipe-form label {
+#new-recipe-form label
+#new-ingredient-form label
+#new-ingredient-form label {
     font-weight: bold;
 }
 
 
 #new-recipe-form input[type="text"],
 #new-recipe-form input[type="url"],
-#new-recipe-form textarea {
+#new-recipe-form textarea,
+#new-ingredient-form input[type="text"],
+#new-ingredient-form input[type="url"],
+#new-ingredient-form textarea {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
@@ -216,7 +198,8 @@ aside {
     box-sizing: border-box;
 }
 
-#new-recipe-form button {
+#new-recipe-form button,
+#new-ingredient-form button {
     padding: 0.5rem;
     background-color: #500110;
     color: white;
@@ -225,6 +208,7 @@ aside {
     cursor: pointer;
 }
 
+#new-recipe-form button:hover,
 #new-recipe-form button:hover {
     background-color: #CA8787;
 }
