@@ -1,10 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
-  recipeObject.forEach((recipe) => {
+  recipes.forEach((recipe) => {
     setRecipe(recipe);
   });
 });
-
-
 
 function setRecipe(recipe) {
   setRecipeTitle(recipe);
@@ -14,7 +12,7 @@ function setRecipe(recipe) {
   setPreparationSteps(recipe);
 }
 
-const recipeObject = [
+const recipes = [
   {
     id: 1,
     title: "Gløgg",
@@ -97,8 +95,6 @@ function setPreparationSteps(recipe) {
   }
 }
 
-
-
 const newIngredientForm = document.getElementById("new-ingredient-form");
 if (newIngredientForm) {
   newIngredientForm.addEventListener("submit", (event) => {
@@ -113,7 +109,7 @@ if (newIngredientForm) {
       return;
     }
 
-    const currentRecipe = recipeObject[recipeObject.length - 1];
+    const currentRecipe = recipes[recipes.length - 1];
     currentRecipe.ingredients.push({
       NAME: newIngredientName,
       AMOUNT: newIngredientAmount,
@@ -128,12 +124,9 @@ if (newIngredientForm) {
   console.error("Element #new-recipe-form not found");
 }
 
-
-
-
 function addNewRecipe(newRecipeData) {
   const newRecipe = {
-    id: recipeObject.length + 1,
+    id: recipes.length + 1,
     title: newRecipeData.title,
     picture_url: newRecipeData.imageUrl,
     description: newRecipeData.description,
@@ -141,7 +134,7 @@ function addNewRecipe(newRecipeData) {
     preparationSteps: newRecipeData.preparationSteps,
   };
 
-  recipeObject.push(newRecipe);
+  recipes.push(newRecipe);
 
   setRecipe(newRecipe);
 }
@@ -185,14 +178,14 @@ if (newRecipeForm) {
     });
 
     const newRecipeData = {
-      id: recipeObject.length + 1,
+      id: recipes.length + 1,
       title,
       imageUrl,
       description,
       ingredients,
       preparationSteps,
     };
-    console.log(recipeObject);
+    console.log(recipes);
     addNewRecipe(newRecipeData);
     document.getElementById("title").value = "";
     document.getElementById("image-url").value = "";
