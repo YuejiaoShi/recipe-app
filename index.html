@@ -51,7 +51,7 @@
                 <p class="instructions">You can click <i class="fa fa-th-list fa-fw mr-1"></i><strong>Recipes</strong>
                     to see our recipes.</p>
                 <p class="instructions">You can always click <i class="fas fa-hamburger"></i><strong>
-                        Recipestic</strong> to go back to our home page.</p>
+                        Recipestic</strong> to go back to home page.</p>
                 <p class="instructions">You can add your own recipe by filling out the <strong>Add New Recipe</strong>
                     form below.</p>
 
@@ -114,7 +114,18 @@
                         <button type="submit">Subscribe</button>
                     </form>
                 </div>
+                <div id="new-ingredient-form" class="hide-recipe-part">
+                    <h3>Add Ingredients</h3>
+                    <form id="new-ingredient-form">
+                        <label for="ingredient-name">Ingredient Name:</label><br>
+                        <input type="text" id="ingredient-name" name="title" required><br><br>
 
+                        <label for="ingredient-amount">Ingredient Amount:</label><br>
+                        <input type="text" id="ingredient-amount" name="title" required><br><br>
+
+                        <button type="submit">Add Recipe</button>
+                    </form>
+                </div>
             </aside>
         </section>
     </main>

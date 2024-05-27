@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const hideRecipePart = document.querySelector(".hide-recipe-part");
-  if (hideRecipePart) {
-    hideRecipePart.classList.add("hide");
+  const hideRecipeParts = document.querySelectorAll(".hide-recipe-part");
+  if (hideRecipeParts) {
+    hideRecipeParts.forEach((part) => part.classList.add("hide"));
   }
 
   const urlParams = new URLSearchParams(window.location.search);
@@ -94,6 +94,35 @@ function setPreparationSteps(recipe) {
     console.error("Element #preparation ul not found");
   }
 }
+// Add new Ingredients
+const newIngredientForm = document.getElementById("new-ingredient-form");
+if (newIngredientForm) {
+  newIngredientForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const newIngredientName = document.getElementById("ingredient-name").value;
+    const newIngredientAmount =
+      document.getElementById("ingredient-amount").value;
+
+    if (!newIngredientName) {
+      alert("Please provide ingredient name.");
+      return;
+    }
+
+    const currentRecipe = recipes[recipes.length - 1];
+    currentRecipe.ingredients.push({
+      NAME: newIngredientName,
+      AMOUNT: newIngredientAmount,
+    });
+
+    document.getElementById("ingredient-name").value = "";
+    document.getElementById("ingredient-amount").value = "";
+
+    setIngredients(currentRecipe);
+  });
+} else {
+  console.error("Element #new-ingredient-form not found");
+}
 
 // Add new recipe
 function addNewRecipe(newRecipeData) {
@@ -116,9 +145,9 @@ if (newRecipeForm) {
   newRecipeForm.addEventListener("submit", (event) => {
     event.preventDefault();
 
-    const hideRecipePart = document.querySelector(".hide-recipe-part");
-    if (hideRecipePart) {
-      hideRecipePart.classList.remove("hide");
+    const hideRecipeParts = document.querySelectorAll(".hide-recipe-part");
+    if (hideRecipeParts) {
+      hideRecipeParts.forEach((part) => part.classList.remove("hide"));
     }
 
     const title = document.getElementById("title").value;
