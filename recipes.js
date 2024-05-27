@@ -1,0 +1,65 @@
+const recipes = [
+  {
+    id: 1,
+    title: "Gløgg",
+    picture_url:
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Gl%C3%B6gg_kastrull.JPG/800px-Gl%C3%B6gg_kastrull.JPG",
+    description:
+      "Gløgg is a traditional Scandinavian mulled wine, often enjoyed during the winter months and holiday season. This warming beverage is made by infusing red wine with spices such as cinnamon, cloves, and orange zest, then sweetened with sugar and garnished with raisins and almonds. Perfect for cozy gatherings, Gløgg offers a fragrant and festive treat that embodies the spirit of Scandinavian hospitality.",
+    ingredients: [
+      { NAME: "Orange zest", AMOUNT: "0.5" },
+      { NAME: "Water", AMOUNT: "200 ml" },
+      { NAME: "Sugar", AMOUNT: "275 g" },
+      { NAME: "Whole cloves", AMOUNT: "5" },
+      { NAME: "Cinnamon sticks", AMOUNT: "2" },
+      { NAME: "Spice", AMOUNT: undefined },
+      { NAME: "Bottle of red wine", AMOUNT: "1" },
+      { NAME: "Raisins", AMOUNT: "100 g" },
+      { NAME: "Slipped Almonds", AMOUNT: "50 g" },
+    ],
+    preparationSteps: [
+      "Zest half an orange.",
+      "Measure 200 ml water and 275 g sugar.",
+      "Gather 5 whole cloves and 2 cinnamon sticks.",
+      "Combine water, sugar, orange zest, cloves, and cinnamon sticks in a pot.",
+      "Heat and stir until sugar dissolves. Simmer for 10-15 minutes.",
+      "Pour in 1 bottle of red wine.",
+      "Heat gently without boiling for 10-15 minutes.",
+      "Add 100 g raisins and 50 g slipped almonds.",
+      "Ladle into mugs and serve hot.",
+    ],
+    published: "Aug 13",
+    likes: 30,
+    comments: 18,
+  },
+  {
+    id: 2,
+    title: "Danish Crisp Pork (Flæskesteg)",
+    picture_url:
+      "https://i0.wp.com/skandibaking.com/wp-content/uploads/2022/12/danish-roast-pork-flaeskesteg-5.jpg?w=1381&ssl=1",
+    description:
+      "Flæskesteg, a Danish Crisp Pork, is a cherished dish deeply rooted in Danish culinary tradition. It's not just a meal; it's a centerpiece of celebration, often enjoyed during holidays like Christmas. This dish boasts a succulent pork roast with a perfectly crispy and crackling skin, making it a delight for both the palate and the senses.",
+    ingredients: [
+      { NAME: "Pork roast with rind", AMOUNT: "1.5-2 kg" },
+      { NAME: "Salt", AMOUNT: "appropriate" },
+      { NAME: "Pepper", AMOUNT: "appropriate" },
+      { NAME: "Bay leaves", AMOUNT: "4-5" },
+      { NAME: "Water", AMOUNT: "500 ml" },
+    ],
+    preparationSteps: [
+      "Preheat the oven to 225°C (437°F).",
+      "Score the rind of the pork roast in a crisscross pattern, being careful not to cut into the meat.",
+      "Rub the entire roast with a generous amount of salt, ensuring it gets into the scored rind. Season with pepper.",
+      "Place bay leaves in the slits of the scored rind.",
+      "Place the roast on a rack in a roasting pan. Pour 500 ml of water into the bottom of the pan.",
+      "Roast in the oven for about 15 minutes at 225°C (437°F) to start the crackling process.",
+      "Reduce the oven temperature to 200°C (392°F) and continue to roast for about 1.5 hours, or until the internal temperature of the meat reaches 65°C (149°F).",
+      "If the rind isn't crispy enough, turn on the broiler for the last few minutes, keeping a close eye to prevent burning.",
+      "Let the roast rest for 10-15 minutes before carving.",
+      "Carve and serve with traditional sides like boiled potatoes, red cabbage, and gravy.",
+    ],
+    published: "Sep 25",
+    likes: 42,
+    comments: 30,
+  },
+];

@@ -6,61 +6,47 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function setRecipe(recipe) {
   setRecipeTitle(recipe);
+  setMeta(recipe);
   setRecipeImage(recipe);
   setRecipeDescription(recipe);
   setIngredients(recipe);
   setPreparationSteps(recipe);
 }
 
-const recipes = [
-  {
-    id: 1,
-    title: "Gløgg",
-    picture_url:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Gl%C3%B6gg_kastrull.JPG/800px-Gl%C3%B6gg_kastrull.JPG",
-    description:
-      "Flæskesteg, a Danish Crisp Pork, is a cherished dish deeply rooted in Danish culinary tradition. It's not just a meal; it's a centerpiece of celebration, often enjoyed during holidays like Christmas. This dish boasts a succulent pork roast with a perfectly crispy and crackling skin, making it a delight for both the palate and the senses.",
-    ingredients: [
-      { NAME: "Orange zest", AMOUNT: "0.5" },
-      { NAME: "Water", AMOUNT: "200 ml" },
-      { NAME: "Sugar", AMOUNT: "275 g" },
-      { NAME: "Whole cloves", AMOUNT: "5" },
-      { NAME: "Cinnamon sticks", AMOUNT: "2" },
-      { NAME: "Spice", AMOUNT: undefined },
-      { NAME: "Bottle of red wine", AMOUNT: "1" },
-      { NAME: "Raisins", AMOUNT: "100 g" },
-      { NAME: "Slipped Almonds", AMOUNT: "50 g" },
-    ],
-    preparationSteps: ["Mix everything, heat it, and you are good to go!"],
-  },
-];
-
 function setRecipeTitle(recipe) {
   const recipeTitle = document.getElementById("recipe-title");
-  if (recipeTitle) {
-    recipeTitle.textContent = recipe.title;
-  } else {
-    console.error("Element #recipe-title not found");
-  }
+  recipeTitle
+    ? (recipeTitle.textContent = recipe.title)
+    : console.error("Element #recipe-title not found");
+}
+
+function setMeta(recipe) {
+  const recipePublished = document.getElementById("published");
+  const recipeLikes = document.getElementById("likes");
+  const recipeComments = document.getElementById("comments");
+  recipePublished
+    ? (recipePublished.textContent = recipe.published)
+    : console.error("Element #published not found");
+  recipeLikes
+    ? (recipeLikes.textContent = recipe.likes)
+    : console.error("Element #likes not found");
+  recipeComments
+    ? (recipeComments.textContent = recipe.comments)
+    : console.error("Element #comments not found");
 }
 
 function setRecipeImage(recipe) {
   const recipeImage = document.getElementById("recipe-image");
-  if (recipeImage) {
-    recipeImage.src = recipe.picture_url;
-    recipeImage.alt = recipe.title;
-  } else {
-    console.error("Element #recipe-image not found");
-  }
+  recipeImage
+    ? ((recipeImage.src = recipe.picture_url), (recipeImage.alt = recipe.title))
+    : console.error("Element #recipe-image not found");
 }
 
 function setRecipeDescription(recipe) {
   const recipeDescription = document.getElementById("recipe-description");
-  if (recipeDescription) {
-    recipeDescription.innerText = recipe.description;
-  } else {
-    console.error("Element #recipe-description not found");
-  }
+  recipeDescription
+    ? (recipeDescription.innerText = recipe.description)
+    : console.error("Element #recipe-description not found");
 }
 
 function setIngredients(recipe) {
@@ -95,6 +81,7 @@ function setPreparationSteps(recipe) {
   }
 }
 
+// Add new Ingredients
 const newIngredientForm = document.getElementById("new-ingredient-form");
 if (newIngredientForm) {
   newIngredientForm.addEventListener("submit", (event) => {
@@ -121,9 +108,10 @@ if (newIngredientForm) {
     setIngredients(currentRecipe);
   });
 } else {
-  console.error("Element #new-recipe-form not found");
+  console.error("Element #new-ingredient-form not found");
 }
 
+// Add new recipe
 function addNewRecipe(newRecipeData) {
   const newRecipe = {
     id: recipes.length + 1,
@@ -192,5 +180,13 @@ if (newRecipeForm) {
     document.getElementById("description").value = "";
     document.getElementById("ingredients").value = "";
     document.getElementById("preparation-steps").value = "";
+  });
+}
+
+
+const gridOfAllRecipes = document.getElementById("nav-recipes");
+if (gridOfAllRecipes) {
+  gridOfAllRecipes.addEventListener("click", () => {
+    window.location.href = "recipeGrid.html";
   });
 }
