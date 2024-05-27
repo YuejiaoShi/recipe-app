@@ -191,7 +191,6 @@ if (newRecipeForm) {
   });
 }
 
-
 // Handle Home link
 const setHome = document.getElementById("nav-home");
 if (setHome) {
@@ -206,4 +205,29 @@ if (gridOfAllRecipes) {
   gridOfAllRecipes.addEventListener("click", () => {
     window.location.href = "recipe-grid.html";
   });
+}
+// Handle Search bar
+const searchForm = document.getElementById("search-form");
+const searchInput = document.getElementById("search-input");
+const searchButton = document.getElementById("search-icon");
+searchButton.addEventListener("click", handleSearch);
+
+function handleSearch(event) {
+  event.preventDefault();
+  const inputString = searchInput.value.trim().toLowerCase();
+  if (inputString) {
+    const filteredRecipes = recipes.filter((recipe) =>
+      recipe.title.toLowerCase().includes(inputString)
+    );
+    const queryString = encodeURIComponent(JSON.stringify(filteredRecipes));
+    window.location.href = `recipe-grid.html?recipe=${queryString}`;
+  } else {
+    window.location.href = `recipe-grid.html`;
+  }
+}
+
+function handleIconClick(event) {
+  if (event.target.id === "search-icon") {
+    handleSearch();
+  }
 }

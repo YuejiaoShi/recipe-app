@@ -37,6 +37,29 @@ header {
   color: #fbc531;
 }
 
+.search-form {
+  display: flex;
+  align-items: center;
+  margin: 0 5px;
+}
+
+.search-input {
+  background-color: white;
+  border: 0;
+  padding: 0.1rem 0.3rem 0.1rem 0.3rem;
+  margin: 0;
+  border-radius: 10px;
+}
+
+#search-icon {
+  display: inline-block;
+  border: 0;
+  padding: 0.1rem 0.4rem 0.1rem 0.4rem;
+  margin: 0;
+  background-color: white;
+  border-radius: 10px;
+}
+
 /* -------- Nav Bar -------- */
 
 .recipe-grid-container {
@@ -49,6 +72,7 @@ header {
   align-content: flex-start;
   gap: 2rem;
 }
+
 .recipe-card {
   text-align: center;
 }

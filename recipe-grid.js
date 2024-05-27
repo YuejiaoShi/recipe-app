@@ -1,11 +1,19 @@
 document.addEventListener("DOMContentLoaded", () => {
-  createRecipeGrid();
+  const urlParams = new URLSearchParams(window.location.search);
+  const recipesParam = urlParams.get("recipe");
+
+  if (recipesParam) {
+    const filteredRecipes = JSON.parse(decodeURIComponent(recipesParam));
+    createRecipeGrid(filteredRecipes);
+  } else {
+    createRecipeGrid(recipes);
+  }
 });
 
 function createRecipeGrid(recipe) {
   const recipeGrid = document.getElementById("recipe-grid-container");
 
-  recipes.forEach((recipe) => {
+  recipe.forEach((recipe) => {
     const recipeCard = document.createElement("div");
     recipeCard.classList.add("recipe-card");
 
@@ -40,4 +48,30 @@ if (gridOfAllRecipes) {
   gridOfAllRecipes.addEventListener("click", () => {
     window.location.href = "recipe-grid.html";
   });
+}
+
+// Handle Search bar
+const searchForm = document.getElementById("search-form");
+const searchInput = document.getElementById("search-input");
+const searchButton = document.getElementById("search-icon");
+searchButton.addEventListener("click", handleSearch);
+
+function handleSearch(event) {
+  event.preventDefault();
+  const inputString = searchInput.value.trim().toLowerCase();
+  if (inputString) {
+    const filteredRecipes = recipes.filter((recipe) =>
+      recipe.title.toLowerCase().includes(inputString)
+    );
+    const queryString = encodeURIComponent(JSON.stringify(filteredRecipes));
+    window.location.href = `recipe-grid.html?recipe=${queryString}`;
+  } else {
+    window.location.href = `recipe-grid.html`;
+  }
+}
+
+function handleIconClick(event) {
+  if (event.target.id === "search-icon") {
+    handleSearch();
+  }
 }

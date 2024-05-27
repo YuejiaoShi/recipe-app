@@ -23,7 +23,16 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="nvbCollapse">
+
                 <ul class="navbar-nav ml-auto">
+                    <form action="Search" class="search-form" id="search-form" role="search">
+                        <div id="search-wrapper">
+                            <input type="text" id="search-input" class="search-input" placeholder=" Search Recipes..."
+                                required>
+                            <button id="search-icon"><i class="fa fa-search" aria-hidden="true"></i></button>
+                        </div>
+                    </form>
+
                     <li class="nav-item pl-1">
                         <a class="nav-link" href="#" id="nav-recipes"><i
                                 class="fa fa-th-list fa-fw mr-1"></i>Recipes</a>
@@ -35,7 +44,8 @@
                         <a class="nav-link" href="#"><i class="fa fa-info-circle fa-fw mr-1"></i>About</a>
                     </li>
                     <li class="nav-item pl-1">
-                        <a class="nav-link" href="#"><i class="fa fa-phone fa-fw fa-rotate-180 mr-1"></i>Contact</a>
+                        <a class="nav-link" href="#footer"><i
+                                class="fa fa-phone fa-fw fa-rotate-180 mr-1"></i>Contact</a>
                     </li>
                 </ul>
             </div>
@@ -130,7 +140,7 @@
         </section>
     </main>
 
-    <footer>
+    <footer id="footer">
         <div class="jumbotron jumbotron-fluid bg-secondary p-4 mt-5 mb-0">
             <div class="container">
                 <div class="row">
