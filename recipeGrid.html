@@ -5,17 +5,109 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recipe Grids</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="recipesGrid.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 </head>
 
 <body>
-    <main>
-        <div id="recipe-grid-container" class="recipe-grid-container">
-            <!-- Recipe grids added from recipeGrid.js -->
+    <header>
+        <h1>Recipestic</h1>
+        <p>Welcome to Recipestic, discover fantastic recipes here!</p>
+    </header>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand text-white" href="#"><i class="fas fa-hamburger"></i> Recipestic</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nvbCollapse"
+                aria-controls="nvbCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="nvbCollapse">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item pl-1">
+                        <a class="nav-link" href="#" id="nav-recipes"><i
+                                class="fa fa-th-list fa-fw mr-1"></i>Recipes</a>
+                    </li>
+                    <li class="nav-item pl-1">
+                        <a class="nav-link" href="#"><i class="fas fa-heartbeat"></i> Nutrition</a>
+                    </li>
+                    <li class="nav-item pl-1">
+                        <a class="nav-link" href="#"><i class="fa fa-info-circle fa-fw mr-1"></i>About</a>
+                    </li>
+                    <li class="nav-item pl-1">
+                        <a class="nav-link" href="#"><i class="fa fa-phone fa-fw fa-rotate-180 mr-1"></i>Contact</a>
+                    </li>
+                </ul>
+            </div>
         </div>
+    </nav>
+
+
+    <main>
+        <section id="recipe-container">
+            <article id="recipe-grid-container" class="recipe-grid-container">
+
+                <!-- Recipe grids added from recipeGrid.js -->
+            </article>
+            <aside id="sidebar">
+                <div class="send-email">
+                    <h3>Sign up for our newsletter</h3>
+                    <form id="email-form" method="post">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                        <input type="email" name="email" placeholder="Your Email" required>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </aside>
+        </section>
     </main>
-    <script src="recipes.js"></script>
-    <script src="recipeGrid.js"></script> 
+    <footer>
+        <div class="jumbotron jumbotron-fluid bg-secondary p-4 mt-5 mb-0">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 cizgi">
+                        <div class="card bg-secondary border-0">
+                            <div class="card-body text-light text-center">
+                                <h5 class="card-title text-white display-4" style="font-size:30px">Recipestic</h5>
+                                <p class="d-inline lead">Recipestic © 2024
+                                </p>
+                                <p>
+                                </p>
+                                <p>Danneskiold-Samsøes Allé 41, 1434 København K.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 cizgi">
+                        <div class="card bg-secondary border-0">
+                            <div class="card-body text-center">
+                                <h5 class="card-title text-white display-4" style="font-size:30px">Contact Me</h5>
+                                <a class="text-light d-block lead" style="margin-left: -20px" href="#"><i
+                                        class="fa fa-phone mr-2"></i>+45 00000000</a>
+                                <a class="text-light d-block lead" href="#"><i
+                                        class="fa fa-envelope mr-2"></i>admin@recipestic.com</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                        <div class="card bg-secondary border-0">
+                            <div class="card-body text-center">
+                                <h5 class="card-title text-white display-4" style="font-size:30px">Social Media</h5>
+                                <a class="text-light" href="#"><i class="fab fa-facebook-square fa-fw fa-2x"></i></a>
+                                <a class="text-light" href="#"><i class="fab fa-twitter-square fa-fw fa-2x"></i></a>
+                                <a class="text-light" href="#"><i class="fab fa-instagram fa-fw fa-2x"></i></a>
+                                <a class="text-light" href="#"><i class="fab fa-linkedin fa-fw fa-2x"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="recipesList.js"></script>
+    <script src="recipeGrid.js"></script>
+
 </body>
 
 </html>

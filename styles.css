@@ -62,7 +62,7 @@ main {
     margin: 0 auto;
 }
 
-#recipe-content {
+#recipe-container {
     display: flex;
     max-width: 1200px;
     width: 100%;
