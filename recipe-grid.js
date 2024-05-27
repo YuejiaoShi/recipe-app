@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function createRecipeGrid(recipe) {
   const recipeGrid = document.getElementById("recipe-grid-container");
+  recipeGrid.innerHTML = "";
 
   recipe.forEach((recipe) => {
     const recipeCard = document.createElement("div");
@@ -74,4 +75,13 @@ function handleIconClick(event) {
   if (event.target.id === "search-icon") {
     handleSearch();
   }
+}
+
+// handle sort
+const sortButton = document.getElementById("sort-by-ingredient-amount");
+sortButton.addEventListener("click", () => sortByIngredientAmount(recipes)); 
+
+function sortByIngredientAmount(recipes) {
+  recipes.sort((a, b) => a.ingredients.length - b.ingredients.length);
+  createRecipeGrid(recipes);
 }
