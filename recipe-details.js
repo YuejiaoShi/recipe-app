@@ -1,11 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const hideRecipePart = document.querySelector(".hide-recipe-part");
-  if (hideRecipePart) {
-    hideRecipePart.classList.add("hide");
-  }
-
   const urlParams = new URLSearchParams(window.location.search);
-  const recipeId = parseInt(urlParams.get("id"), 0);
+  const recipeId = parseInt(urlParams.get("id"));
 
   if (recipeId) {
     const recipe = recipes.find((r) => r.id === recipeId);
@@ -82,9 +77,8 @@ function setIngredients(recipe) {
 
 function setPreparationSteps(recipe) {
   const preparationStepsList = document.querySelector("#preparation ul");
-
+  preparationStepsList.innerHTML = "";
   if (preparationStepsList) {
-    preparationStepsList.innerHTML = "";
     recipe.preparationSteps.forEach((step) => {
       const li = document.createElement("li");
       li.textContent = step;
@@ -93,6 +87,36 @@ function setPreparationSteps(recipe) {
   } else {
     console.error("Element #preparation ul not found");
   }
+}
+
+// Add new Ingredients
+const newIngredientForm = document.getElementById("new-ingredient-form");
+if (newIngredientForm) {
+  newIngredientForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const newIngredientName = document.getElementById("ingredient-name").value;
+    const newIngredientAmount =
+      document.getElementById("ingredient-amount").value;
+
+    if (!newIngredientName) {
+      alert("Please provide ingredient name.");
+      return;
+    }
+
+    const currentRecipe = recipes[recipes.length - 1];
+    currentRecipe.ingredients.push({
+      NAME: newIngredientName,
+      AMOUNT: newIngredientAmount,
+    });
+
+    document.getElementById("ingredient-name").value = "";
+    document.getElementById("ingredient-amount").value = "";
+
+    setIngredients(currentRecipe);
+  });
+} else {
+  console.error("Element #new-ingredient-form not found");
 }
 
 // Add new recipe
@@ -116,11 +140,6 @@ if (newRecipeForm) {
   newRecipeForm.addEventListener("submit", (event) => {
     event.preventDefault();
 
-    const hideRecipePart = document.querySelector(".hide-recipe-part");
-    if (hideRecipePart) {
-      hideRecipePart.classList.remove("hide");
-    }
-
     const title = document.getElementById("title").value;
     const imageUrl = document.getElementById("image-url").value;
     const description = document.getElementById("description").value;
@@ -137,6 +156,7 @@ if (newRecipeForm) {
     }
 
     const ingredients = [];
+
     ingredientsInput.forEach((ingredientLine) => {
       const parts = ingredientLine.split(":");
 
@@ -163,7 +183,6 @@ if (newRecipeForm) {
     };
     console.log(recipes);
     addNewRecipe(newRecipeData);
-
     document.getElementById("title").value = "";
     document.getElementById("image-url").value = "";
     document.getElementById("description").value = "";
@@ -171,6 +190,7 @@ if (newRecipeForm) {
     document.getElementById("preparation-steps").value = "";
   });
 }
+
 
 // Handle Home link
 const setHome = document.getElementById("nav-home");

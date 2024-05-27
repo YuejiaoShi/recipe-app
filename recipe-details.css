@@ -8,20 +8,14 @@ body {
     min-height: 100vh;
     justify-content: space-between;
 }
-.hide {
-    display: none;
-  }
+
 header {
     background-color: #500110;
     color: white;
     padding: 1rem;
     text-align: center;
 }
-.instructions {
-    color: #500110;
-    margin-bottom: 10px;
-    font-size: large;
-}
+
 .navbar {
     background-color: #CA8787;
 }

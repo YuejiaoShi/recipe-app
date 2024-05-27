@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recipestic</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="recipe-details.css">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 </head>
@@ -44,38 +44,28 @@
 
     <main>
         <section id="recipe-container">
-
-
             <article id="recipe-details">
-                <h1>Welcome to Recipestic!</h1>
-                <p class="instructions">You can click <i class="fa fa-th-list fa-fw mr-1"></i><strong>Recipes</strong>
-                    to see our recipes.</p>
-                <p class="instructions">You can always click <i class="fas fa-hamburger"></i><strong>
-                        Recipestic</strong> to go back to our home page.</p>
-                <p class="instructions">You can add your own recipe by filling out the <strong>Add New Recipe</strong>
-                    form below.</p>
+                <h2 id="recipe-title"></h2>
+                <p class="recipe-meta">Published: <span id="published"></span> | Likes: <span id="likes"></span> | <span
+                        id="comments"></span>
+                    Comments</span></p>
+                <img id="recipe-image" src="#" alt="Recipe Image Placeholder">
+                <p id="recipe-description"></p>
 
-                <div class="hide-recipe-part">
-                    <h2 id="recipe-title"></h2>
-                    <img id="recipe-image" src="#" alt="Recipe Image Placeholder">
-                    <p id="recipe-description"></p>
-
-                    <section id="recipe-ingredients">
-                        <h3>Ingredients</h3>
-                        <ul>
-                            <!-- Ingredients from JavaScript -->
-                        </ul>
-                    </section>
+                <section id="recipe-ingredients">
+                    <h3>Ingredients</h3>
+                    <ul>
+                        <!-- Ingredients from JavaScript -->
+                    </ul>
+                </section>
 
 
-                    <section id="preparation">
-                        <h3>Preparation Steps</h3>
-                        <ul>
-                            <!-- Preparation Steps from JavaScript -->
-                        </ul>
-                    </section>
-                </div>
-
+                <section id="preparation">
+                    <h3>Preparation Steps</h3>
+                    <ul>
+                        <!-- Preparation Steps from JavaScript -->
+                    </ul>
+                </section>
 
                 <div id="new-recipe-form">
                     <h2>Add New Recipe</h2>
@@ -114,7 +104,26 @@
                         <button type="submit">Subscribe</button>
                     </form>
                 </div>
+                <div class="related-recipes">
+                    <h3>Related Recipes</h3>
+                    <ul>
+                        <li><a href="#">Gløgg</a></li>
+                        <li><a href="#">Frikadeller</a></li>
+                        <li><a href="#">Æbleskiver</a></li>
+                    </ul>
+                </div>
+                <div id="new-ingredient-form">
+                    <h3>Add Ingredients</h3>
+                    <form id="new-ingredient-form">
+                        <label for="ingredient-name">Ingredient Name:</label><br>
+                        <input type="text" id="ingredient-name" name="title" required><br><br>
 
+                        <label for="ingredient-amount">Ingredient Amount:</label><br>
+                        <input type="text" id="ingredient-amount" name="title" required><br><br>
+
+                        <button type="submit">Add Recipe</button>
+                    </form>
+                </div>
             </aside>
         </section>
     </main>
@@ -164,8 +173,8 @@
         </div>
     </footer>
     <script src="recipes-list.js"></script>
-    <script src="index.js"></script>
-
-</body>
-
-</html>
+    <script src="recipe-details.js""></script>
+    
+    </body>
+    
+    </html>

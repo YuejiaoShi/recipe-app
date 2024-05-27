@@ -10,7 +10,7 @@ function createRecipeGrid(recipe) {
     recipeCard.classList.add("recipe-card");
 
     const recipeLink = document.createElement("a");
-    recipeLink.href = `recipe_details.html?id=${recipe.id}`;
+    recipeLink.href = `recipe-details.html?id=${recipe.id}`;
 
     const img = document.createElement("img");
     img.src = recipe.picture_url;
@@ -23,5 +23,21 @@ function createRecipeGrid(recipe) {
 
     recipeCard.appendChild(recipeLink);
     recipeGrid.appendChild(recipeCard);
+  });
+}
+
+// Handle Home link
+const setHome = document.getElementById("nav-home");
+if (setHome) {
+  setHome.addEventListener("click", () => {
+    window.location.href = "index.html";
+  });
+}
+
+// Handle recipes grid
+const gridOfAllRecipes = document.getElementById("nav-recipes");
+if (gridOfAllRecipes) {
+  gridOfAllRecipes.addEventListener("click", () => {
+    window.location.href = "recipe-grid.html";
   });
 }
