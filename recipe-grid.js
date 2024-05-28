@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const urlParams = new URLSearchParams(window.location.search);
   const recipesParam = urlParams.get("recipe");
+  // Any more clever or simpler solution to achieve the same functionality...
 
   if (recipesParam) {
     const filteredRecipes = JSON.parse(decodeURIComponent(recipesParam));
@@ -60,12 +61,22 @@ searchButton.addEventListener("click", handleSearch);
 function handleSearch(event) {
   event.preventDefault();
   const inputString = searchInput.value.trim().toLowerCase();
+
   if (inputString) {
     const filteredRecipes = recipes.filter((recipe) =>
       recipe.title.toLowerCase().includes(inputString)
     );
-    const queryString = encodeURIComponent(JSON.stringify(filteredRecipes));
-    window.location.href = `recipe-grid.html?recipe=${queryString}`;
+    if (filteredRecipes.length > 0) {
+      const queryString = encodeURIComponent(JSON.stringify(filteredRecipes));
+      window.location.href = `recipe-grid.html?recipe=${queryString}`;
+    } else {
+      const recipeContainer = document.getElementById("recipe-container");
+      recipeContainer.innerHTML = "";
+      const pCatchNoFoundSearch = document.createElement("p");
+      pCatchNoFoundSearch.textContent =
+        "No recipes found matching your search, try something else:)";
+      recipeContainer.appendChild(pCatchNoFoundSearch);
+    }
   } else {
     window.location.href = `recipe-grid.html`;
   }
@@ -78,10 +89,22 @@ function handleIconClick(event) {
 }
 
 // handle sort
-const sortButton = document.getElementById("sort-by-ingredient-amount");
-sortButton.addEventListener("click", () => sortByIngredientAmount(recipes)); 
+const sortSelect = document.getElementById("sort-by");
+sortSelect.addEventListener("change", () => {
+  const selectedOption = sortSelect.value;
+  if (selectedOption === "by-increasing-ingredient-amount") {
+    sortByIncreasingIngredientAmount(recipes);
+  } else if (selectedOption === "by-decreasing-ingredient-amount") {
+    sortByDecreasingIngredientAmount(recipes);
+  } // more options in the future
+});
 
-function sortByIngredientAmount(recipes) {
+function sortByIncreasingIngredientAmount(recipes) {
   recipes.sort((a, b) => a.ingredients.length - b.ingredients.length);
+  createRecipeGrid(recipes);
+}
+
+function sortByDecreasingIngredientAmount(recipes) {
+  recipes.sort((a, b) => b.ingredients.length - a.ingredients.length);
   createRecipeGrid(recipes);
 }

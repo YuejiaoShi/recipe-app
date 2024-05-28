@@ -111,16 +111,27 @@ main {
   gap: 2rem;
 }
 
-#recipe-grid-container {
+#recipe-grid-article {
   flex: 3;
+  display: flex;
+  flex-direction: column;
 }
-
 
 aside {
   flex: 1;
   display: flex;
   flex-direction: column;
   gap: 2rem;
+}
+
+.sort-by {
+  width:20%;
+  margin:1rem;
+  border: 3px solid #b3b2b2;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #333;
+  font-size: 16px;
 }
 
 .send-email {

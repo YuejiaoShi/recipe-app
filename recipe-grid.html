@@ -52,8 +52,14 @@
 
     <main>
         <section id="recipe-container">
-            <article id="recipe-grid-article" class="recipe-grid-article"><button id="sort-by-ingredient-amount">Sort
-                    Recipes by Increasing Ingredient Amount</button>
+            <article id="recipe-grid-article" class="recipe-grid-article">
+                <select id="sort-by" class="sort-by">
+                    <option value="" disabled selected hidden>Sort By ...</option>
+                    <option value="by-increasing-ingredient-amount">By Increasing Ingredient Amount</option>
+                    <option value="by-decreasing-ingredient-amount">By Decreasing Ingredient Amount</option>
+                    <!-- more options in the future -->
+                </select>
+
                 <div id="recipe-grid-container" class="recipe-grid-container"></div>
 
                 <!-- Recipe grids added from recipeGrid.js -->
