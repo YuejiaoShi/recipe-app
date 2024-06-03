@@ -7,11 +7,10 @@ function initializePage() {
   setSearch();
   setSorting();
 
-  const urlParams = new URLSearchParams(window.location.search);
-  const recipesParam = urlParams.get("recipe");
+  const filteredRecipesStr = localStorage.getItem("filteredRecipes");
 
-  if (recipesParam) {
-    const filteredRecipes = JSON.parse(decodeURIComponent(recipesParam));
+  if (filteredRecipesStr) {
+    const filteredRecipes = JSON.parse(filteredRecipesStr);
     createRecipeGrid(filteredRecipes);
   } else {
     createRecipeGrid(recipes);
@@ -44,7 +43,7 @@ function createRecipeGrid(recipe) {
   });
 }
 
-// Handle Home link and Recipes Grid links
+// Handle Home link and Recipes Grid link
 function setNavBar() {
   const setHome = document.getElementById("nav-home");
   if (setHome) {
@@ -56,6 +55,7 @@ function setNavBar() {
   const gridOfAllRecipes = document.getElementById("nav-recipes");
   if (gridOfAllRecipes) {
     gridOfAllRecipes.addEventListener("click", () => {
+      localStorage.removeItem("filteredRecipes");
       window.location.href = "recipe-grid.html";
     });
   }
@@ -81,8 +81,8 @@ function setSearch() {
     event.preventDefault();
     const inputString = searchInput.value;
     const filteredRecipes = searchRecipes(inputString);
-    const queryString = encodeURIComponent(JSON.stringify(filteredRecipes));
-    window.location.href = `recipe-grid.html?recipe=${queryString}`;
+    localStorage.setItem("filteredRecipes", JSON.stringify(filteredRecipes));
+    window.location.href = `recipe-grid.html`;
   }
 }
 
@@ -106,13 +106,13 @@ function setSorting() {
 
   function handleSort() {
     const selectedOption = sortSelect.value;
-    const urlParams = new URLSearchParams(window.location.search);
-    const recipesParam = urlParams.get("recipe");
+    const filteredRecipesStr = localStorage.getItem("filteredRecipes");
+    let filteredRecipes = [];
 
-    let filteredRecipes = recipes;
-
-    if (recipesParam) {
-      filteredRecipes = JSON.parse(decodeURIComponent(recipesParam));
+    if (filteredRecipes) {
+      filteredRecipes = JSON.parse(filteredRecipesStr);
+    } else {
+      filteredRecipes = recipes;
     }
 
     const sortedRecipes = sortRecipes(selectedOption, filteredRecipes);

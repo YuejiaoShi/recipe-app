@@ -1,11 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
+  setSearch();
+  setNavBar();
+
   const hideRecipeParts = document.querySelectorAll(".hide-recipe-part");
   if (hideRecipeParts) {
     hideRecipeParts.forEach((part) => part.classList.add("hide"));
   }
 
-  const urlParams = new URLSearchParams(window.location.search);
-  const recipeId = parseInt(urlParams.get("id"), 0);
+  const filteredRecipesStr = localStorage.getItem("filteredRecipes");
+  const recipeId = parseInt(filteredRecipesStr.get("id"), 0);
 
   if (recipeId) {
     const recipe = recipes.find((r) => r.id === recipeId);
@@ -213,6 +216,7 @@ function setNavBar() {
   const gridOfAllRecipes = document.getElementById("nav-recipes");
   if (gridOfAllRecipes) {
     gridOfAllRecipes.addEventListener("click", () => {
+      localStorage.removeItem("filteredRecipes");
       window.location.href = "recipe-grid.html";
     });
   }
@@ -238,7 +242,7 @@ function setSearch() {
     event.preventDefault();
     const inputString = searchInput.value;
     const filteredRecipes = searchRecipes(inputString);
-    const queryString = encodeURIComponent(JSON.stringify(filteredRecipes));
-    window.location.href = `recipe-grid.html?recipe=${queryString}`;
+    localStorage.setItem("filteredRecipes", JSON.stringify(filteredRecipes));
+    window.location.href = "recipe-grid.html";
   }
 }
