@@ -139,7 +139,7 @@ function addNewRecipe(newRecipeData) {
   };
 
   recipes.push(newRecipe);
-
+  localStorage.setItem("newRecipe", JSON.stringify(newRecipe));
   setRecipe(newRecipe);
 }
 

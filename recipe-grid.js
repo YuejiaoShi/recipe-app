@@ -13,16 +13,21 @@ function initializePage() {
     const filteredRecipes = JSON.parse(filteredRecipesStr);
     createRecipeGrid(filteredRecipes);
   } else {
+    const newRecipeStr = localStorage.getItem("newRecipe");
+    if (newRecipeStr) {
+      const newRecipe = JSON.parse(newRecipeStr);
+      recipes.push(newRecipe);
+    }
     createRecipeGrid(recipes);
   }
 }
 
 // Make recipes grid main contents
-function createRecipeGrid(recipe) {
+function createRecipeGrid(recipesToShow) {
   const recipeGrid = document.getElementById("recipe-grid-container");
   recipeGrid.innerHTML = "";
 
-  recipe.forEach((recipe) => {
+  recipesToShow.forEach((recipe) => {
     const recipeCard = document.createElement("div");
     recipeCard.classList.add("recipe-card");
 
@@ -105,11 +110,13 @@ function setSorting() {
   sortSelect.addEventListener("change", handleSort);
 
   function handleSort() {
+    const sortSelect = document.getElementById("sort-by");
     const selectedOption = sortSelect.value;
+
     const filteredRecipesStr = localStorage.getItem("filteredRecipes");
     let filteredRecipes = [];
 
-    if (filteredRecipes) {
+    if (filteredRecipesStr) {
       filteredRecipes = JSON.parse(filteredRecipesStr);
     } else {
       filteredRecipes = recipes;

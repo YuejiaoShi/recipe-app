@@ -4,24 +4,33 @@ document.addEventListener("DOMContentLoaded", () => {
 function initializePage() {
   setNavBar();
   setSearch();
+
   const urlParams = new URLSearchParams(window.location.search);
   const recipeId = parseInt(urlParams.get("id"));
 
-  if (recipeId) {
+  if (!isNaN(recipeId)) {
     const storedRecipe = localStorage.getItem(`recipe_${recipeId}`);
     if (storedRecipe) {
       const recipe = JSON.parse(storedRecipe);
       setRecipe(recipe);
     } else {
-      const recipe = recipes.find((r) => r.id === recipeId);
-      if (recipe) {
-        setRecipe(recipe);
+      const newRecipe = JSON.parse(localStorage.getItem("newRecipe"));
+      if (newRecipe && newRecipe.id === recipeId) {
+        setRecipe(newRecipe);
       } else {
-        console.error("Recipe not found");
+        const recipe = recipes.find((r) => r.id === recipeId);
+        if (recipe) {
+          setRecipe(recipe);
+        } else {
+          console.error("Recipe not found");
+        }
       }
     }
+  } else {
+    console.error("Invalid recipe ID");
   }
 }
+
 
 function setRecipe(recipe) {
   setRecipeTitle(recipe);
@@ -142,8 +151,8 @@ function addNewRecipe(newRecipeData) {
   };
 
   recipes.push(newRecipe);
-
   setRecipe(newRecipe);
+  localStorage.setItem("newRecipe", JSON.stringify(newRecipe));
 }
 
 const newRecipeForm = document.getElementById("new-recipe-form");
@@ -167,7 +176,6 @@ if (newRecipeForm) {
     }
 
     const ingredients = [];
-
     ingredientsInput.forEach((ingredientLine) => {
       const parts = ingredientLine.split(":");
 
