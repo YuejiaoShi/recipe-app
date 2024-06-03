@@ -31,6 +31,7 @@ const recipes = [
     published: "Aug 13",
     likes: 30,
     comments: 18,
+    timer: 45,
   },
   {
     id: 2,
@@ -61,6 +62,7 @@ const recipes = [
     published: "Sep 25",
     likes: 42,
     comments: 30,
+    timer: 160,
   },
   {
     id: 3,
@@ -92,6 +94,7 @@ const recipes = [
     published: "May 10",
     likes: 89,
     comments: 45,
+    timer: 50,
   },
   {
     id: 4,
@@ -123,6 +126,7 @@ const recipes = [
     published: "Feb 18",
     likes: 65,
     comments: 19,
+    timer: 70,
   },
   {
     id: 5,
@@ -155,6 +159,7 @@ const recipes = [
     published: "Dec 15",
     likes: 120,
     comments: 60,
+    timer: 65,
   },
   {
     id: 6,
@@ -185,5 +190,6 @@ const recipes = [
     published: "Jan 5",
     likes: 90,
     comments: 45,
+    timer: 40,
   },
 ];

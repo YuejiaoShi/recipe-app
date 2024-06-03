@@ -1,7 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
+  initializePage();
+});
+
+function initializePage() {
+  setNavBar();
+  setSearch();
+  setSorting();
+
   const urlParams = new URLSearchParams(window.location.search);
   const recipesParam = urlParams.get("recipe");
-  // Any more clever or simpler solution to achieve the same functionality...
 
   if (recipesParam) {
     const filteredRecipes = JSON.parse(decodeURIComponent(recipesParam));
@@ -9,8 +16,9 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     createRecipeGrid(recipes);
   }
-});
+}
 
+// Make recipes grid main contents
 function createRecipeGrid(recipe) {
   const recipeGrid = document.getElementById("recipe-grid-container");
   recipeGrid.innerHTML = "";
@@ -36,75 +44,78 @@ function createRecipeGrid(recipe) {
   });
 }
 
-// Handle Home link
-const setHome = document.getElementById("nav-home");
-if (setHome) {
-  setHome.addEventListener("click", () => {
-    window.location.href = "index.html";
-  });
-}
+// Handle Home link and Recipes Grid links
+function setNavBar() {
+  const setHome = document.getElementById("nav-home");
+  if (setHome) {
+    setHome.addEventListener("click", () => {
+      window.location.href = "index.html";
+    });
+  }
 
-// Handle recipes grid
-const gridOfAllRecipes = document.getElementById("nav-recipes");
-if (gridOfAllRecipes) {
-  gridOfAllRecipes.addEventListener("click", () => {
-    window.location.href = "recipe-grid.html";
-  });
+  const gridOfAllRecipes = document.getElementById("nav-recipes");
+  if (gridOfAllRecipes) {
+    gridOfAllRecipes.addEventListener("click", () => {
+      window.location.href = "recipe-grid.html";
+    });
+  }
 }
 
 // Handle Search bar
-const searchForm = document.getElementById("search-form");
-const searchInput = document.getElementById("search-input");
-const searchButton = document.getElementById("search-icon");
-searchButton.addEventListener("click", handleSearch);
+function setSearch() {
+  const searchInput = document.getElementById("search-input");
+  const searchButton = document.getElementById("search-icon");
+  searchButton.addEventListener("click", handleSearch);
 
-function handleSearch(event) {
-  event.preventDefault();
-  const inputString = searchInput.value.trim().toLowerCase();
-
-  if (inputString) {
-    const filteredRecipes = recipes.filter((recipe) =>
-      recipe.title.toLowerCase().includes(inputString)
-    );
-    if (filteredRecipes.length > 0) {
-      const queryString = encodeURIComponent(JSON.stringify(filteredRecipes));
-      window.location.href = `recipe-grid.html?recipe=${queryString}`;
+  function searchRecipes(inputString) {
+    inputString = inputString.trim().toLowerCase();
+    if (inputString) {
+      return recipes.filter((recipe) =>
+        recipe.title.toLowerCase().includes(inputString)
+      );
     } else {
-      const recipeContainer = document.getElementById("recipe-container");
-      recipeContainer.innerHTML = "";
-      const pCatchNoFoundSearch = document.createElement("p");
-      pCatchNoFoundSearch.textContent =
-        "No recipes found matching your search, try something else:)";
-      recipeContainer.appendChild(pCatchNoFoundSearch);
+      return recipes;
     }
-  } else {
-    window.location.href = `recipe-grid.html`;
+  }
+  function handleSearch(event) {
+    event.preventDefault();
+    const inputString = searchInput.value;
+    const filteredRecipes = searchRecipes(inputString);
+    const queryString = encodeURIComponent(JSON.stringify(filteredRecipes));
+    window.location.href = `recipe-grid.html?recipe=${queryString}`;
   }
 }
 
-function handleIconClick(event) {
-  if (event.target.id === "search-icon") {
-    handleSearch();
+// Handle sort
+function sortRecipes(sortOption, recipes) {
+  if (sortOption === "by-increasing-ingredient-amount") {
+    return recipes
+      .slice()
+      .sort((a, b) => a.ingredients.length - b.ingredients.length);
+  } else if (sortOption === "by-decreasing-ingredient-amount") {
+    return recipes
+      .slice()
+      .sort((a, b) => b.ingredients.length - a.ingredients.length);
+  } // more  options in the future
+  return recipes;
+}
+
+function setSorting() {
+  const sortSelect = document.getElementById("sort-by");
+  sortSelect.addEventListener("change", handleSort);
+
+  function handleSort() {
+    const selectedOption = sortSelect.value;
+    const urlParams = new URLSearchParams(window.location.search);
+    const recipesParam = urlParams.get("recipe");
+
+    let filteredRecipes = recipes;
+
+    if (recipesParam) {
+      filteredRecipes = JSON.parse(decodeURIComponent(recipesParam));
+    }
+
+    const sortedRecipes = sortRecipes(selectedOption, filteredRecipes);
+    createRecipeGrid(sortedRecipes);
   }
-}
-
-// handle sort
-const sortSelect = document.getElementById("sort-by");
-sortSelect.addEventListener("change", () => {
-  const selectedOption = sortSelect.value;
-  if (selectedOption === "by-increasing-ingredient-amount") {
-    sortByIncreasingIngredientAmount(recipes);
-  } else if (selectedOption === "by-decreasing-ingredient-amount") {
-    sortByDecreasingIngredientAmount(recipes);
-  } // more options in the future
-});
-
-function sortByIncreasingIngredientAmount(recipes) {
-  recipes.sort((a, b) => a.ingredients.length - b.ingredients.length);
-  createRecipeGrid(recipes);
-}
-
-function sortByDecreasingIngredientAmount(recipes) {
-  recipes.sort((a, b) => b.ingredients.length - a.ingredients.length);
-  createRecipeGrid(recipes);
 }

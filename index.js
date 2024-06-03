@@ -201,44 +201,44 @@ if (newRecipeForm) {
   });
 }
 
-// Handle Home link
-const setHome = document.getElementById("nav-home");
-if (setHome) {
-  setHome.addEventListener("click", () => {
-    window.location.href = "index.html";
-  });
-}
+// Handle Home link and Recipes Grid links
+function setNavBar() {
+  const setHome = document.getElementById("nav-home");
+  if (setHome) {
+    setHome.addEventListener("click", () => {
+      window.location.href = "index.html";
+    });
+  }
 
-// Handle recipes grid
-const gridOfAllRecipes = document.getElementById("nav-recipes");
-if (gridOfAllRecipes) {
-  gridOfAllRecipes.addEventListener("click", () => {
-    window.location.href = "recipe-grid.html";
-  });
-}
-
-// Handle Search bar
-const searchForm = document.getElementById("search-form");
-const searchInput = document.getElementById("search-input");
-const searchButton = document.getElementById("search-icon");
-searchButton.addEventListener("click", handleSearch);
-
-function handleSearch(event) {
-  event.preventDefault();
-  const inputString = searchInput.value.trim().toLowerCase();
-  if (inputString) {
-    const filteredRecipes = recipes.filter((recipe) =>
-      recipe.title.toLowerCase().includes(inputString)
-    );
-    const queryString = encodeURIComponent(JSON.stringify(filteredRecipes));
-    window.location.href = `recipe-grid.html?recipe=${queryString}`;
-  } else {
-    window.location.href = `recipe-grid.html`;
+  const gridOfAllRecipes = document.getElementById("nav-recipes");
+  if (gridOfAllRecipes) {
+    gridOfAllRecipes.addEventListener("click", () => {
+      window.location.href = "recipe-grid.html";
+    });
   }
 }
 
-function handleIconClick(event) {
-  if (event.target.id === "search-icon") {
-    handleSearch();
+// Handle Search bar
+function setSearch() {
+  const searchInput = document.getElementById("search-input");
+  const searchButton = document.getElementById("search-icon");
+  searchButton.addEventListener("click", handleSearch);
+
+  function searchRecipes(inputString) {
+    inputString = inputString.trim().toLowerCase();
+    if (inputString) {
+      return recipes.filter((recipe) =>
+        recipe.title.toLowerCase().includes(inputString)
+      );
+    } else {
+      return recipes;
+    }
+  }
+  function handleSearch(event) {
+    event.preventDefault();
+    const inputString = searchInput.value;
+    const filteredRecipes = searchRecipes(inputString);
+    const queryString = encodeURIComponent(JSON.stringify(filteredRecipes));
+    window.location.href = `recipe-grid.html?recipe=${queryString}`;
   }
 }
