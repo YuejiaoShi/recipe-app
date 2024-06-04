@@ -1,24 +1,36 @@
 document.addEventListener("DOMContentLoaded", () => {
-  setSearch();
+  initializePage();
+});
+function initializePage() {
   setNavBar();
+  setSearch();
 
-  const hideRecipeParts = document.querySelectorAll(".hide-recipe-part");
-  if (hideRecipeParts) {
-    hideRecipeParts.forEach((part) => part.classList.add("hide"));
-  }
+  const urlParams = new URLSearchParams(window.location.search);
+  const recipeId = parseInt(urlParams.get("id"));
 
-  const filteredRecipesStr = localStorage.getItem("filteredRecipes");
-  const recipeId = parseInt(filteredRecipesStr.get("id"), 0);
-
-  if (recipeId) {
-    const recipe = recipes.find((r) => r.id === recipeId);
-    if (recipe) {
+  if (!isNaN(recipeId)) {
+    const storedRecipe = localStorage.getItem(`recipe_${recipeId}`);
+    if (storedRecipe) {
+      const recipe = JSON.parse(storedRecipe);
       setRecipe(recipe);
     } else {
-      console.error("Recipe not found");
+      const newRecipe = JSON.parse(localStorage.getItem("newRecipe"));
+      if (newRecipe && newRecipe.id === recipeId) {
+        setRecipe(newRecipe);
+      } else {
+        const recipe = recipes.find((r) => r.id === recipeId);
+        if (recipe) {
+          setRecipe(recipe);
+        } else {
+          console.error("Recipe not found");
+        }
+      }
     }
+  } else {
+    console.error("Invalid recipe ID");
   }
-});
+}
+
 
 function setRecipe(recipe) {
   setRecipeTitle(recipe);
@@ -85,9 +97,8 @@ function setIngredients(recipe) {
 
 function setPreparationSteps(recipe) {
   const preparationStepsList = document.querySelector("#preparation ul");
-
+  preparationStepsList.innerHTML = "";
   if (preparationStepsList) {
-    preparationStepsList.innerHTML = "";
     recipe.preparationSteps.forEach((step) => {
       const li = document.createElement("li");
       li.textContent = step;
@@ -97,6 +108,7 @@ function setPreparationSteps(recipe) {
     console.error("Element #preparation ul not found");
   }
 }
+
 // Add new Ingredients
 const newIngredientForm = document.getElementById("new-ingredient-form");
 if (newIngredientForm) {
@@ -139,19 +151,14 @@ function addNewRecipe(newRecipeData) {
   };
 
   recipes.push(newRecipe);
-  localStorage.setItem("newRecipe", JSON.stringify(newRecipe));
   setRecipe(newRecipe);
+  localStorage.setItem("newRecipe", JSON.stringify(newRecipe));
 }
 
 const newRecipeForm = document.getElementById("new-recipe-form");
 if (newRecipeForm) {
   newRecipeForm.addEventListener("submit", (event) => {
     event.preventDefault();
-
-    const hideRecipeParts = document.querySelectorAll(".hide-recipe-part");
-    if (hideRecipeParts) {
-      hideRecipeParts.forEach((part) => part.classList.remove("hide"));
-    }
 
     const title = document.getElementById("title").value;
     const imageUrl = document.getElementById("image-url").value;
@@ -195,7 +202,6 @@ if (newRecipeForm) {
     };
     console.log(recipes);
     addNewRecipe(newRecipeData);
-
     document.getElementById("title").value = "";
     document.getElementById("image-url").value = "";
     document.getElementById("description").value = "";
@@ -227,7 +233,6 @@ function setSearch() {
   const searchInput = document.getElementById("search-input");
   const searchButton = document.getElementById("search-icon");
   searchButton.addEventListener("click", handleSearch);
-
   function searchRecipes(inputString) {
     inputString = inputString.trim().toLowerCase();
     if (inputString) {

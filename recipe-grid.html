@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recipestic</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Recipe Grids</title>
+    <link rel="stylesheet" href="recipes-grid.css">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 </head>
@@ -23,7 +23,6 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="nvbCollapse">
-
                 <ul class="navbar-nav ml-auto">
                     <form action="Search" class="search-form" id="search-form" role="search">
                         <div id="search-wrapper">
@@ -32,7 +31,6 @@
                             <button id="search-icon"><i class="fa fa-search" aria-hidden="true"></i></button>
                         </div>
                     </form>
-
                     <li class="nav-item pl-1">
                         <a class="nav-link" href="#" id="nav-recipes"><i
                                 class="fa fa-th-list fa-fw mr-1"></i>Recipes</a>
@@ -44,78 +42,28 @@
                         <a class="nav-link" href="#"><i class="fa fa-info-circle fa-fw mr-1"></i>About</a>
                     </li>
                     <li class="nav-item pl-1">
-                        <a class="nav-link" href="#footer"><i
-                                class="fa fa-phone fa-fw fa-rotate-180 mr-1"></i>Contact</a>
+                        <a class="nav-link" href="#"><i class="fa fa-phone fa-fw fa-rotate-180 mr-1"></i>Contact</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
+
     <main>
         <section id="recipe-container">
+            <article id="recipe-grid-article" class="recipe-grid-article">
+                <select id="sort-by" class="sort-by">
+                    <option value="" disabled selected hidden>Sort By ...</option>
+                    <option value="by-increasing-ingredient-amount">By Increasing Ingredient Amount</option>
+                    <option value="by-decreasing-ingredient-amount">By Decreasing Ingredient Amount</option>
+                    <!-- more options in the future -->
+                </select>
 
+                <div id="recipe-grid-container" class="recipe-grid-container"></div>
 
-            <article id="recipe-details">
-                <h1>Welcome to Recipestic!</h1>
-                <p class="instructions">You can click <i class="fa fa-th-list fa-fw mr-1"></i><strong>Recipes</strong>
-                    to see our recipes.</p>
-                <p class="instructions">You can always click <i class="fas fa-hamburger"></i><strong>
-                        Recipestic</strong> to go back to home page.</p>
-                <p class="instructions">You can add your own recipe by filling out the <strong>Add New Recipe</strong>
-                    form below.</p>
-                <p class="instructions">You can search your favorite recipe by input keywords in search bar.</p>
-
-                <div class="hide-recipe-part">
-                    <h2 id="recipe-title"></h2>
-                    <img id="recipe-image" src="#" alt="Recipe Image Placeholder">
-                    <p id="recipe-description"></p>
-
-                    <section id="recipe-ingredients">
-                        <h3>Ingredients</h3>
-                        <ul>
-                            <!-- Ingredients from JavaScript -->
-                        </ul>
-                    </section>
-
-
-                    <section id="preparation">
-                        <h3>Preparation Steps</h3>
-                        <ul>
-                            <!-- Preparation Steps from JavaScript -->
-                        </ul>
-                    </section>
-                </div>
-
-
-                <div id="new-recipe-form">
-                    <h2>Add New Recipe</h2>
-                    <form id="new-recipe-form">
-                        <label for="title">Title:</label><br>
-                        <input type="text" id="title" name="title" required><br><br>
-
-                        <label for="image-url">Image URL:</label><br>
-                        <input type="url" id="image-url" name="image-url" required><br><br>
-
-                        <label for="description">Description:</label><br>
-                        <textarea id="description" name="description" rows="3" cols="50" required></textarea><br><br>
-
-                        <label for="ingredients">Ingredients (minimum 5):</label><br>
-                        <textarea id="ingredients" name="ingredients" rows="5" cols="50"
-                            placeholder="Please use 'Ingredient Name: Amount' format. Hit enter before writing another ingredient"
-                            required></textarea><br><br>
-
-                        <label for="preparation-steps">Preparation Steps:</label><br>
-                        <textarea id="preparation-steps" name="preparation-steps" rows="3" cols="50"
-                            required></textarea><br><br>
-
-                        <button type="submit">Add Recipe</button>
-                    </form>
-                </div>
-
-
+                <!-- Recipe grids added from recipeGrid.js -->
             </article>
-
             <aside id="sidebar">
                 <div class="send-email">
                     <h3>Sign up for our newsletter</h3>
@@ -125,23 +73,10 @@
                         <button type="submit">Subscribe</button>
                     </form>
                 </div>
-                <div id="new-ingredient-form" class="hide-recipe-part">
-                    <h3>Add Ingredients</h3>
-                    <form id="new-ingredient-form">
-                        <label for="ingredient-name">Ingredient Name:</label><br>
-                        <input type="text" id="ingredient-name" name="title" required><br><br>
-
-                        <label for="ingredient-amount">Ingredient Amount:</label><br>
-                        <input type="text" id="ingredient-amount" name="title" required><br><br>
-
-                        <button type="submit">Add Recipe</button>
-                    </form>
-                </div>
             </aside>
         </section>
     </main>
-
-    <footer id="footer">
+    <footer>
         <div class="jumbotron jumbotron-fluid bg-secondary p-4 mt-5 mb-0">
             <div class="container">
                 <div class="row">
@@ -186,7 +121,7 @@
         </div>
     </footer>
     <script src="recipes-list.js"></script>
-    <script src="index.js"></script>
+    <script src="recipe-grid.js"></script>
 
 </body>
 
