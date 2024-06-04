@@ -7,6 +7,7 @@ function initializePage() {
   setSearch();
   createNewRecipeForm();
   createNewIngredientForm();
+  trackTimeSpent();
 
   const urlParams = new URLSearchParams(window.location.search);
   const recipeId = parseInt(urlParams.get("id"));
@@ -220,4 +221,21 @@ function createNewRecipeForm() {
       document.getElementById("preparation-steps").value = "";
     });
   }
+}
+
+// Track Time Spent on page;
+function trackTimeSpent() {
+  const timeSpentOnPageSpan = document.getElementById("time-spent-on-page");
+  const startTime = new Date();
+
+  function updateTime() {
+    const currentTime = new Date();
+    const timeDifference = currentTime - startTime;
+    const totalSeconds = Math.floor(timeDifference / 1000);
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+
+    timeSpentOnPageSpan.textContent = `${minutes} : ${seconds}`;
+  }
+  setInterval(updateTime, 1000);
 }

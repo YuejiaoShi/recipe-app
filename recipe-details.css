@@ -16,6 +16,35 @@ header {
     text-align: center;
 }
 
+.page-timer {
+    border: 2px solid #500110;
+    border-radius: 10px;
+    width: 85%;
+    max-width: 300px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 0 auto;
+  }
+
+
+.page-timer div {
+    display: inline-block;
+    font-size: 18px;
+    margin: 0 5px;
+    padding: 0
+}
+
+#time-spent-on-page {
+    font-weight: bold;
+    color: #500110;
+    width: 50px;
+    display: inline-block;
+}
+
 .navbar {
     background-color: #CA8787;
 }
