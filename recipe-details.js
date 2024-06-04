@@ -5,6 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
 function initializePage() {
   setNavBar();
   setSearch();
+  createNewRecipeForm();
+  createNewIngredientForm();
 
   const urlParams = new URLSearchParams(window.location.search);
   const recipeId = parseInt(urlParams.get("id"));
@@ -110,102 +112,112 @@ function setPreparationSteps(recipe) {
 }
 
 // Add new Ingredients
-const newIngredientForm = document.getElementById("new-ingredient-form");
-if (newIngredientForm) {
-  newIngredientForm.addEventListener("submit", (event) => {
-    event.preventDefault();
+function createNewIngredientForm() {
+  const newIngredientForm = document.getElementById("new-ingredient-form");
+  if (newIngredientForm) {
+    newIngredientForm.addEventListener("submit", (event) => {
+      event.preventDefault();
 
-    const newIngredientName = document.getElementById("ingredient-name").value;
-    const newIngredientAmount =
-      document.getElementById("ingredient-amount").value;
+      const newIngredientName =
+        document.getElementById("ingredient-name").value;
+      const newIngredientAmount =
+        document.getElementById("ingredient-amount").value;
 
-    if (!newIngredientName) {
-      alert("Please provide ingredient name.");
-      return;
-    }
-
-    const currentRecipe = recipes[recipes.length - 1];
-    currentRecipe.ingredients.push({
-      NAME: newIngredientName,
-      AMOUNT: newIngredientAmount,
-    });
-
-    document.getElementById("ingredient-name").value = "";
-    document.getElementById("ingredient-amount").value = "";
-
-    setIngredients(currentRecipe);
-  });
-} else {
-  console.error("Element #new-ingredient-form not found");
-}
-
-// Add new recipe
-function addNewRecipe(newRecipeData) {
-  const newRecipe = {
-    id: recipes.length + 1,
-    title: newRecipeData.title,
-    picture_url: newRecipeData.imageUrl,
-    description: newRecipeData.description,
-    ingredients: newRecipeData.ingredients,
-    preparationSteps: newRecipeData.preparationSteps,
-  };
-
-  recipes.push(newRecipe);
-  setRecipe(newRecipe);
-  localStorage.setItem("newRecipe", JSON.stringify(newRecipe));
-}
-
-const newRecipeForm = document.getElementById("new-recipe-form");
-if (newRecipeForm) {
-  newRecipeForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-
-    const title = document.getElementById("title").value;
-    const imageUrl = document.getElementById("image-url").value;
-    const description = document.getElementById("description").value;
-    const ingredientsInput = document
-      .getElementById("ingredients")
-      .value.split("\n");
-    const preparationSteps = document
-      .getElementById("preparation-steps")
-      .value.split("\n");
-
-    if (ingredientsInput.length < 5) {
-      alert("Please provide at least 5 ingredients.");
-      return;
-    }
-
-    const ingredients = [];
-    ingredientsInput.forEach((ingredientLine) => {
-      const parts = ingredientLine.split(":");
-
-      if (parts.length !== 2) {
-        alert(
-          "Invalid ingredient format. Please use 'Ingredient Name: Amount' format."
-        );
+      if (!newIngredientName) {
+        alert("Please provide ingredient name.");
         return;
       }
 
-      const name = parts[0].trim();
-      const amount = parts[1].trim();
+      const currentRecipe = recipes[recipes.length - 1];
+      currentRecipe.ingredients.push({
+        NAME: newIngredientName,
+        AMOUNT: newIngredientAmount,
+      });
 
-      ingredients.push({ NAME: name, AMOUNT: amount });
+      document.getElementById("ingredient-name").value = "";
+      document.getElementById("ingredient-amount").value = "";
+
+      setIngredients(currentRecipe);
     });
+  } else {
+    console.error("Element #new-ingredient-form not found");
+  }
+}
 
-    const newRecipeData = {
+// Add new recipe
+function createNewRecipeForm() {
+  function addNewRecipe(newRecipeData) {
+    const newRecipe = {
       id: recipes.length + 1,
-      title,
-      imageUrl,
-      description,
-      ingredients,
-      preparationSteps,
+      title: newRecipeData.title,
+      picture_url: newRecipeData.imageUrl,
+      description: newRecipeData.description,
+      ingredients: newRecipeData.ingredients,
+      preparationSteps: newRecipeData.preparationSteps,
     };
-    console.log(recipes);
-    addNewRecipe(newRecipeData);
-    document.getElementById("title").value = "";
-    document.getElementById("image-url").value = "";
-    document.getElementById("description").value = "";
-    document.getElementById("ingredients").value = "";
-    document.getElementById("preparation-steps").value = "";
-  });
+
+    recipes.push(newRecipe);
+    localStorage.setItem("newRecipe", JSON.stringify(newRecipe));
+    setRecipe(newRecipe);
+  }
+  const newRecipeForm = document.getElementById("new-recipe-form");
+  if (newRecipeForm) {
+    newRecipeForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const hideRecipeParts = document.querySelectorAll(".hide-recipe-part");
+      if (hideRecipeParts) {
+        hideRecipeParts.forEach((part) => part.classList.remove("hide"));
+      }
+
+      const title = document.getElementById("title").value;
+      const imageUrl = document.getElementById("image-url").value;
+      const description = document.getElementById("description").value;
+      const ingredientsInput = document
+        .getElementById("ingredients")
+        .value.split("\n");
+      const preparationSteps = document
+        .getElementById("preparation-steps")
+        .value.split("\n");
+
+      if (ingredientsInput.length < 5) {
+        alert("Please provide at least 5 ingredients.");
+        return;
+      }
+
+      const ingredients = [];
+      ingredientsInput.forEach((ingredientLine) => {
+        const parts = ingredientLine.split(":");
+
+        if (parts.length !== 2) {
+          alert(
+            "Invalid ingredient format. Please use 'Ingredient Name: Amount' format."
+          );
+          return;
+        }
+
+        const name = parts[0].trim();
+        const amount = parts[1].trim();
+
+        ingredients.push({ NAME: name, AMOUNT: amount });
+      });
+
+      const newRecipeData = {
+        id: recipes.length + 1,
+        title,
+        imageUrl,
+        description,
+        ingredients,
+        preparationSteps,
+      };
+      console.log(recipes);
+      addNewRecipe(newRecipeData);
+
+      document.getElementById("title").value = "";
+      document.getElementById("image-url").value = "";
+      document.getElementById("description").value = "";
+      document.getElementById("ingredients").value = "";
+      document.getElementById("preparation-steps").value = "";
+    });
+  }
 }
