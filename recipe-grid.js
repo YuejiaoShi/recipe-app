@@ -49,7 +49,6 @@ function createRecipeGrid(recipesToShow) {
   });
 }
 
-
 // Handle sort
 function sortRecipes(sortOption, recipes) {
   if (sortOption === "by-increasing-ingredient-amount") {
