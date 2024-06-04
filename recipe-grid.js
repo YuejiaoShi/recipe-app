@@ -1,10 +1,9 @@
-import { setNavBar, setSearch, alertDemo } from "./common.js";
+import { setNavBar, setSearch } from "./common.js";
 document.addEventListener("DOMContentLoaded", () => {
   initializePage();
 });
 
 function initializePage() {
-  alertDemo();
   setNavBar();
   setSearch();
   setSorting();
@@ -50,48 +49,6 @@ function createRecipeGrid(recipesToShow) {
   });
 }
 
-// Handle Home link and Recipes Grid link
-// function setNavBar() {
-//   const setHome = document.getElementById("nav-home");
-//   if (setHome) {
-//     setHome.addEventListener("click", () => {
-//       window.location.href = "index.html";
-//     });
-//   }
-
-//   const gridOfAllRecipes = document.getElementById("nav-recipes");
-//   if (gridOfAllRecipes) {
-//     gridOfAllRecipes.addEventListener("click", () => {
-//       localStorage.removeItem("filteredRecipes");
-//       window.location.href = "recipe-grid.html";
-//     });
-//   }
-// }
-
-// // Handle Search bar
-// function setSearch() {
-//   const searchInput = document.getElementById("search-input");
-//   const searchButton = document.getElementById("search-icon");
-//   searchButton.addEventListener("click", handleSearch);
-
-//   function searchRecipes(inputString) {
-//     inputString = inputString.trim().toLowerCase();
-//     if (inputString) {
-//       return recipes.filter((recipe) =>
-//         recipe.title.toLowerCase().includes(inputString)
-//       );
-//     } else {
-//       return recipes;
-//     }
-//   }
-//   function handleSearch(event) {
-//     event.preventDefault();
-//     const inputString = searchInput.value;
-//     const filteredRecipes = searchRecipes(inputString);
-//     localStorage.setItem("filteredRecipes", JSON.stringify(filteredRecipes));
-//     window.location.href = `recipe-grid.html`;
-//   }
-// }
 
 // Handle sort
 function sortRecipes(sortOption, recipes) {
