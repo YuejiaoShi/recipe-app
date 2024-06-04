@@ -8,6 +8,7 @@ function initializePage() {
   createNewRecipeForm();
   createNewIngredientForm();
   trackTimeSpent();
+  setCookingTimer();
 
   const urlParams = new URLSearchParams(window.location.search);
   const recipeId = parseInt(urlParams.get("id"));
@@ -42,6 +43,7 @@ function setRecipe(recipe) {
   setRecipeDescription(recipe);
   setIngredients(recipe);
   setPreparationSteps(recipe);
+  setCookingTimer(recipe);
 }
 
 function setRecipeTitle(recipe) {
@@ -238,4 +240,113 @@ function trackTimeSpent() {
     timeSpentOnPageSpan.textContent = `${minutes} : ${seconds}`;
   }
   setInterval(updateTime, 1000);
+}
+// set cooking timer
+function setCookingTimer() {
+  let cookingTimer;
+  let remainingSeconds;
+  const defaultMinutes = 10;
+  const TimerStatus = {
+    Start: "Start",
+    Pause: "Pause",
+    Continue: "Continue",
+  };
+  let currentTimerStatus = TimerStatus.Start;
+
+  const cookingTimerSpan = document.getElementById("cooking-timer-span");
+  const startButton = document.getElementById("start-button");
+  const cancelButton = document.getElementById("cancel-button");
+
+  startButton.addEventListener("click", () => {
+    const input = document.getElementById("cooking-timer-input");
+    const seconds = 60 * parseInt(input.value);
+    switch (currentTimerStatus) {
+      case TimerStatus.Start:
+        startTimer(seconds);
+        break;
+      case TimerStatus.Continue:
+        continueTimer(remainingSeconds);
+        break;
+      case TimerStatus.Pause:
+        stopTimer();
+        break;
+      default:
+        throw "Unknown TimerStatus" + currentTimerStatus;
+    }
+  });
+
+  function continueTimer(remainingSeconds) {
+    startCookingTimer(remainingSeconds);
+    updateTimerStatus();
+  }
+
+  function stopTimer() {
+    stopCookingTimer();
+    updateTimerStatus();
+  }
+
+  function startTimer(seconds) {
+    startCookingTimer(seconds);
+    updateTimerStatus();
+    document.getElementById("cooking-timer-input").readOnly = true;
+  }
+
+  function updateTimerStatus() {
+    switch (currentTimerStatus) {
+      case TimerStatus.Start:
+        currentTimerStatus = TimerStatus.Pause;
+        break;
+      case TimerStatus.Continue:
+        currentTimerStatus = TimerStatus.Pause;
+        break;
+      case TimerStatus.Pause:
+        currentTimerStatus = TimerStatus.Continue;
+        break;
+      default:
+        throw "Unknown TimerStatus" + currentTimerStatus;
+    }
+    document.getElementById("start-button").innerText = currentTimerStatus;
+  }
+
+  function clearTimeStatus() {
+    currentTimerStatus = TimerStatus.Start;
+    document.getElementById("start-button").innerText = currentTimerStatus;
+  }
+
+  cancelButton.addEventListener("click", () => {
+    clearInterval(cookingTimer);
+    document.getElementById("cooking-timer-input").value = defaultMinutes;
+    cookingTimerSpan.textContent = "";
+    document.getElementById("cooking-timer-input").readOnly = false;
+    clearTimeStatus();
+  });
+
+  function startCookingTimer(totalSeconds) {
+    clearInterval(cookingTimer);
+    remainingSeconds = totalSeconds;
+    updateTimerDisplay(remainingSeconds);
+
+    cookingTimer = setInterval(() => {
+      remainingSeconds--;
+      if (remainingSeconds <= 0) {
+        clearInterval(cookingTimer);
+        alert("Cooking time is up!");
+        updateTimerDisplay(0);
+      } else {
+        updateTimerDisplay(remainingSeconds);
+      }
+    }, 1000);
+  }
+
+  function stopCookingTimer() {
+    clearInterval(cookingTimer);
+  }
+
+  function updateTimerDisplay(seconds) {
+    const minutes = Math.floor(seconds / 60);
+    const displaySeconds = seconds % 60;
+    cookingTimerSpan.textContent = `Time Remaining: ${minutes}:${
+      displaySeconds < 10 ? "0" : ""
+    }${displaySeconds}`;
+  }
 }

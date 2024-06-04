@@ -58,7 +58,13 @@
                     Comments</span></p>
                 <img id="recipe-image" src="#" alt="Recipe Image Placeholder">
                 <p id="recipe-description"></p>
-
+                <div id="cooking-timer">
+                    <label for="cooking-timer-input">Enter cooking timer (minutes):</label>
+                    <input type="number" id="cooking-timer-input" min="1" value="10">
+                    <span id="cooking-timer-span"></span>
+                    <button class="cooking-timer-buttons" id="start-button">Start</button>
+                    <button class="cooking-timer-buttons" id="cancel-button">Cancel</button>
+                </div>
                 <section id="recipe-ingredients">
                     <h3>Ingredients</h3>
                     <ul>
@@ -105,7 +111,8 @@
             <aside id="sidebar">
 
                 <div class="page-timer">
-                    <div>Time on Page</div> <div id="time-spent-on-page">0 : 0</div>
+                    <div>Time on Page</div>
+                    <div id="time-spent-on-page">0 : 0</div>
                 </div>
                 <div class="send-email">
                     <h3>Sign up for our newsletter</h3>
