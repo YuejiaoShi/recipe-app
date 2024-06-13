@@ -1,15 +1,32 @@
-import { setNavBar, setSearch } from "./common.js";
-document.addEventListener("DOMContentLoaded", () => {
-  initializePage();
-});
+import { setNavBar, setSearch, fetchRecipes, storeRecipes } from "./common.js";
 
-function initializePage() {
+async function fetchInitialRecipes() {
+  const response = await fetch(
+    "https://raw.githubusercontent.com/YuejiaoShi/YuejiaoShi.github.io/main/data/recipes.json"
+  );
+  const data = await response.json();
+  return data.recipes;
+}
+
+// import data from "./data/recipes.json" assert { "type": "json" };
+// const initialRecipes = data.recipes;
+
+document.addEventListener("DOMContentLoaded", async () => {
+  const initialRecipes = await fetchInitialRecipes();
+
+  if (localStorage.getItem("recipes") === null) {
+    storeRecipes(initialRecipes);
+  }
+  const recipes = fetchRecipes();
+  initializePage(recipes);
+});
+function initializePage(recipes) {
   setNavBar();
   setSearch();
   setSorting();
 
   const filteredRecipesStr = localStorage.getItem("filteredRecipes");
-
+  recipes = recipes || [];
   if (filteredRecipesStr) {
     const filteredRecipes = JSON.parse(filteredRecipesStr);
     createRecipeGrid(filteredRecipes);
@@ -71,16 +88,9 @@ function setSorting() {
     const sortSelect = document.getElementById("sort-by");
     const selectedOption = sortSelect.value;
 
-    const filteredRecipesStr = localStorage.getItem("filteredRecipes");
-    let filteredRecipes = [];
+    const recipes = fetchRecipes();
 
-    if (filteredRecipesStr) {
-      filteredRecipes = JSON.parse(filteredRecipesStr);
-    } else {
-      filteredRecipes = recipes;
-    }
-
-    const sortedRecipes = sortRecipes(selectedOption, filteredRecipes);
+    const sortedRecipes = sortRecipes(selectedOption, recipes);
     createRecipeGrid(sortedRecipes);
   }
 }
