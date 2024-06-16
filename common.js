@@ -18,6 +18,8 @@ export function setNavBar() {
 
 // Handle Search bar
 export function setSearch() {
+  const recipes = JSON.parse(localStorage.getItem("recipes"));
+
   const searchInput = document.getElementById("search-input");
   const searchButton = document.getElementById("search-icon");
   searchButton.addEventListener("click", handleSearch);
@@ -39,4 +41,10 @@ export function setSearch() {
     localStorage.setItem("filteredRecipes", JSON.stringify(filteredRecipes));
     window.location.href = `recipe-grid.html`;
   }
+}
+export function fetchRecipes() {
+  return JSON.parse(localStorage.getItem("recipes"));
+}
+export function storeRecipes(recipes) {
+  localStorage.setItem("recipes", JSON.stringify(recipes));
 }

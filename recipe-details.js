@@ -1,42 +1,30 @@
-import { setNavBar, setSearch } from "./common.js";
+import { setNavBar, setSearch, fetchRecipes, storeRecipes } from "./common.js";
+
 document.addEventListener("DOMContentLoaded", () => {
-  initializePage();
+  const allRecipes = fetchRecipes();
+  initializePage(allRecipes);
 });
-function initializePage() {
+
+function initializePage(recipes) {
+  storeRecipes(recipes);
   setNavBar();
   setSearch();
   createNewRecipeForm();
   createNewIngredientForm();
   trackTimeSpent();
   setCookingTimer();
-
+  const allRecipes = fetchRecipes();
   const urlParams = new URLSearchParams(window.location.search);
   const recipeId = parseInt(urlParams.get("id"));
-
-  if (!isNaN(recipeId)) {
-    const storedRecipe = localStorage.getItem(`recipe_${recipeId}`);
-    if (storedRecipe) {
-      const recipe = JSON.parse(storedRecipe);
-      setRecipe(recipe);
-    } else {
-      const newRecipe = JSON.parse(localStorage.getItem("newRecipe"));
-      if (newRecipe && newRecipe.id === recipeId) {
-        setRecipe(newRecipe);
-      } else {
-        const recipe = recipes.find((r) => r.id === recipeId);
-        if (recipe) {
-          setRecipe(recipe);
-        } else {
-          console.error("Recipe not found");
-        }
-      }
-    }
+  const recipe = allRecipes.find((r) => r.id === recipeId);
+  if (recipe) {
+    displayRecipe(recipe);
   } else {
-    console.error("Invalid recipe ID");
+    alert("Recipe not found");
   }
 }
 
-function setRecipe(recipe) {
+function displayRecipe(recipe) {
   setRecipeTitle(recipe);
   setMeta(recipe);
   setRecipeImage(recipe);
@@ -116,6 +104,7 @@ function setPreparationSteps(recipe) {
 
 // Add new Ingredients
 function createNewIngredientForm() {
+  const recipes = fetchRecipes();
   const newIngredientForm = document.getElementById("new-ingredient-form");
   if (newIngredientForm) {
     newIngredientForm.addEventListener("submit", (event) => {
@@ -149,20 +138,6 @@ function createNewIngredientForm() {
 
 // Add new recipe
 function createNewRecipeForm() {
-  function addNewRecipe(newRecipeData) {
-    const newRecipe = {
-      id: recipes.length + 1,
-      title: newRecipeData.title,
-      picture_url: newRecipeData.imageUrl,
-      description: newRecipeData.description,
-      ingredients: newRecipeData.ingredients,
-      preparationSteps: newRecipeData.preparationSteps,
-    };
-
-    recipes.push(newRecipe);
-    localStorage.setItem("newRecipe", JSON.stringify(newRecipe));
-    setRecipe(newRecipe);
-  }
   const newRecipeForm = document.getElementById("new-recipe-form");
   if (newRecipeForm) {
     newRecipeForm.addEventListener("submit", (event) => {
@@ -204,7 +179,7 @@ function createNewRecipeForm() {
 
         ingredients.push({ NAME: name, AMOUNT: amount });
       });
-
+      const recipes = fetchRecipes();
       const newRecipeData = {
         id: recipes.length + 1,
         title,
@@ -213,8 +188,22 @@ function createNewRecipeForm() {
         ingredients,
         preparationSteps,
       };
-      console.log(recipes);
       addNewRecipe(newRecipeData);
+
+      function addNewRecipe(newRecipeData) {
+        let recipes = fetchRecipes();
+        const newRecipe = {
+          id: recipes.length + 1,
+          title: newRecipeData.title,
+          picture_url: newRecipeData.imageUrl,
+          description: newRecipeData.description,
+          ingredients: newRecipeData.ingredients,
+          preparationSteps: newRecipeData.preparationSteps,
+        };
+        recipes.push(newRecipe);
+        storeRecipes(recipes);
+        displayRecipe(newRecipe);
+      }
 
       document.getElementById("title").value = "";
       document.getElementById("image-url").value = "";

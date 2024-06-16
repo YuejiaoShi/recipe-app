@@ -1,24 +1,31 @@
-import { setNavBar, setSearch } from "./common.js";
-document.addEventListener("DOMContentLoaded", () => {
-  setSearch();
-  setNavBar();
-  createNewRecipeForm();
+import { setNavBar, setSearch, fetchRecipes } from "./common.js";
 
+document.addEventListener("DOMContentLoaded", () => {
+  const recipes = fetchRecipes();
   const hideRecipeParts = document.querySelectorAll(".hide-recipe-part");
   if (hideRecipeParts) {
     hideRecipeParts.forEach((part) => part.classList.add("hide"));
   }
-
+  setNavBar();
+  setSearch();
+  createNewRecipeForm();
   const filteredRecipesStr = localStorage.getItem("filteredRecipes");
-  const recipeId = parseInt(filteredRecipesStr.get("id"), 0);
+  if (filteredRecipesStr) {
+    const filteredRecipes = JSON.parse(filteredRecipesStr);
+    const recipeId = filteredRecipes[0].id;
 
-  if (recipeId) {
-    const recipe = recipes.find((r) => r.id === recipeId);
-    if (recipe) {
-      setRecipe(recipe);
+    if (recipeId) {
+      const recipe = recipes.find((r) => r.id === recipeId);
+      if (recipe) {
+        setRecipe(recipe);
+      } else {
+        console.error("Recipe not found");
+      }
     } else {
-      console.error("Recipe not found");
+      console.error("No recipe ID found in filtered recipes");
     }
+  } else {
+    console.error("No filtered recipes found in localStorage");
   }
 });
 
