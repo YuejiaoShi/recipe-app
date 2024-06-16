@@ -19,13 +19,15 @@
         <div class="container">
             <a class="navbar-brand text-white" href="#" id="nav-home"><i class="fas fa-hamburger"></i> Recipestic</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nvbCollapse"
-                aria-controls="nvbCollapse">
+                aria-controls="nvbCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
+
             <div class="collapse navbar-collapse" id="nvbCollapse">
 
                 <ul class="navbar-nav ml-auto">
-                    <form action="Search" class="search-form" id="search-form" role="search">
+                    <form action="Search" class="search-form form-inline my-2 my-lg-0" id="search-form" role="search">
                         <div id="search-wrapper">
                             <input type="text" id="search-input" class="search-input" placeholder=" Search Recipes..."
                                 required>
@@ -175,6 +177,8 @@
     </footer>
     <!-- <script src="recipes-list.js"></script> -->
     <script type="module" src="index.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
 

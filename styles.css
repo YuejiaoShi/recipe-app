@@ -34,6 +34,14 @@ header {
     color: #fff;
 }
 
+.navbar-toggler {
+    background-color: #fff !important;
+}
+
+.navbar-toggler-icon {
+    background-image: url('data:image/svg+xml;charset=utf8,<svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path stroke="grey" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"/></svg>') ! important;
+}
+
 
 .navbar .navbar-nav .nav-link:hover {
     color: #fbc531;
@@ -42,6 +50,7 @@ header {
 .navbar .navbar-nav .active>.nav-link {
     color: #fbc531;
 }
+
 
 .search-form {
     display: flex;
