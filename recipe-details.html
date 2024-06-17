@@ -56,11 +56,19 @@
 
     <main>
         <section id="recipe-container">
-            <article id="recipe-details">
-                <h2 id="recipe-title"></h2>
-                <p class="recipe-meta">Published: <span id="published"></span> | Likes: <span id="likes"></span> | <span
-                        id="comments"></span>
-                    Comments</span></p>
+            <article id="recipe-details"><div class="title-timer">
+                <div class="recipe-title-meta">
+                    <h2 id="recipe-title"></h2>
+                    <p class="recipe-meta">Published: <span id="published"></span> | Likes: <span id="likes"></span> |
+                        <span id="comments"></span>
+                        Comments</span></p>
+                </div>
+                <div class="page-timer">
+                    <div class="page-timer-text">Time on Page </div>
+                    <div id="time-spent-on-page">0 : 0</div>
+                </div>
+            </div>
+                
                 <img id="recipe-image" src="#" alt="Recipe Image Placeholder">
                 <p id="recipe-description"></p>
                 <div id="cooking-timer">
@@ -115,10 +123,7 @@
 
             <aside id="sidebar">
 
-                <div class="page-timer">
-                    <div>Time on Page</div>
-                    <div id="time-spent-on-page">0 : 0</div>
-                </div>
+
                 <div class="send-email">
                     <h3>Sign up for our newsletter</h3>
                     <form id="email-form" method="post">

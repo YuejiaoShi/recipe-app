@@ -16,35 +16,6 @@ header {
     text-align: center;
 }
 
-.page-timer {
-    border: 2px solid #500110;
-    border-radius: 10px;
-    width: 85%;
-    max-width: 300px;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    padding: 10px;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    margin: 0 auto;
-}
-
-
-.page-timer div {
-    display: inline-block;
-    font-size: 18px;
-    margin: 0 5px;
-    padding: 0
-}
-
-#time-spent-on-page {
-    font-weight: bold;
-    color: #500110;
-    width: 50px;
-    display: inline-block;
-}
-
 #cooking-timer {
     text-align: center;
     margin-top: 20px;
@@ -159,6 +130,40 @@ main {
     margin: 0 auto;
 }
 
+.page-timer {
+    border: 2px solid #500110;
+    border-radius: 10px;
+    width: 225px;
+    height: 50px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 1rem 0;
+    align-items: center;
+}
+
+
+.page-timer div {
+    display: inline-block;
+    font-size: 18px; align-items: center;
+}
+.page-timer-text{
+    margin:0 0.7rem
+}
+#time-spent-on-page {
+    font-weight: bold;
+    color: #500110;
+    width: 50px;
+    display: inline-block;
+}
+.title-timer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+	justify-content: space-between;
+}
 #recipe-container {
     display: flex;
     max-width: 1200px;
