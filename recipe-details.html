@@ -55,8 +55,8 @@
     </nav>
 
     <main>
-        <section id="recipe-container">
-            <article id="recipe-details"><div class="title-timer">
+        <section id="recipe-container" class="recipe-container">
+            <section id="recipe-details"><div class="title-timer">
                 <div class="recipe-title-meta">
                     <h2 id="recipe-title"></h2>
                     <p class="recipe-meta">Published: <span id="published"></span> | Likes: <span id="likes"></span> |
@@ -78,22 +78,22 @@
                     <button class="cooking-timer-buttons" id="start-button">Start</button>
                     <button class="cooking-timer-buttons" id="cancel-button">Cancel</button>
                 </div>
-                <section id="recipe-ingredients">
+                <div id="recipe-ingredients">
                     <h3>Ingredients</h3>
                     <ul>
                         <!-- Ingredients from JavaScript -->
                     </ul>
-                </section>
+                </div>
 
 
-                <section id="preparation">
+                <div id="preparation">
                     <h3>Preparation Steps</h3>
                     <ul>
                         <!-- Preparation Steps from JavaScript -->
                     </ul>
-                </section>
+                </div>
 
-                <div id="new-recipe-form">
+                <div id="new-recipe-form-container" class="new-recipe-form-container">
                     <h2>Add New Recipe</h2>
                     <form id="new-recipe-form">
                         <label for="title">Title:</label><br>
@@ -117,14 +117,10 @@
                         <button type="submit">Add Recipe</button>
                     </form>
                 </div>
+            </section>
 
-
-            </article>
-
-            <aside id="sidebar">
-
-
-                <div class="send-email">
+            <section id="sidebar" class="sidebar">
+                <div class="send-email-container" id="send-email-container">
                     <h3>Sign up for our newsletter</h3>
                     <form id="email-form" method="post">
                         <input type="text" name="name" placeholder="Your Name" required>
@@ -132,7 +128,7 @@
                         <button type="submit">Subscribe</button>
                     </form>
                 </div>
-                <div class="related-recipes">
+                <div class="related-recipes-container" id="related-recipes-container">
                     <h3>Related Recipes</h3>
                     <ul>
                         <li><a href="#">Gløgg</a></li>
@@ -140,19 +136,18 @@
                         <li><a href="#">Æbleskiver</a></li>
                     </ul>
                 </div>
-                <div id="new-ingredient-form">
+                <div id="new-ingredient-form-container" class="new-ingredient-form-container">
                     <h3>Add Ingredients</h3>
+                    <p>to the current recipe</p>
                     <form id="new-ingredient-form">
                         <label for="ingredient-name">Ingredient Name:</label><br>
-                        <input type="text" id="ingredient-name" name="title" required><br><br>
-
+                        <input type="text" id="ingredient-name" name="title" required><br>
                         <label for="ingredient-amount">Ingredient Amount:</label><br>
-                        <input type="text" id="ingredient-amount" name="title" required><br><br>
-
+                        <input type="text" id="ingredient-amount" name="title" required><br>
                         <button type="submit">Add Recipe</button>
                     </form>
                 </div>
-            </aside>
+            </section>
         </section>
     </main>
 

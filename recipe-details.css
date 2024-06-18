@@ -118,6 +118,28 @@ footer .cizgi {
     footer .cizgi {
         border-right: none;
     }
+
+    .recipe-container {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .new-ingredient-form-container {
+        order: 1;
+    }
+
+    .send-email-container {
+        order: 2;
+    }
+
+    .related-recipes-container {
+        order: 3;
+    }
+
+
 }
 
 
@@ -126,7 +148,7 @@ main {
     justify-content: center;
     padding: 2rem;
     justify-content: center;
-    min-width: 1264px;
+
     margin: 0 auto;
 }
 
@@ -137,7 +159,7 @@ main {
     height: 50px;
     text-align: center;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     margin: 1rem 0;
@@ -147,23 +169,28 @@ main {
 
 .page-timer div {
     display: inline-block;
-    font-size: 18px; align-items: center;
+    font-size: 18px;
+    align-items: center;
 }
-.page-timer-text{
-    margin:0 0.7rem
+
+.page-timer-text {
+    margin-left: 1.1rem
 }
+
 #time-spent-on-page {
     font-weight: bold;
     color: #500110;
-    width: 50px;
+    margin-right: 1.1rem;
     display: inline-block;
 }
-.title-timer{
+
+.title-timer {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-	justify-content: space-between;
+    justify-content: space-between;
 }
+
 #recipe-container {
     display: flex;
     max-width: 1200px;
@@ -208,45 +235,51 @@ main {
 }
 
 
-aside {
+.sidebar {
     flex: 1;
     display: flex;
     flex-direction: column;
     gap: 2rem;
 }
 
-.send-email,
-.related-recipes,
-#new-recipe-form,
-#new-ingredient-form {
+.send-email-container,
+.related-recipes-container,
+.new-recipe-form-container,
+.new-ingredient-form-container {
     padding: 20px;
     background-color: #f9f9f9;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    margin-top: 2rem;
+
 }
 
-.send-email h3,
-.related-recipes h3,
-#new-recipe-form h3,
-#new-ingredient-form h3 {
+.send-email-container h3,
+.related-recipes-container h3,
+.new-recipe-form-container h3,
+.new-ingredient-form-container h3,
+.new-ingredient-form-container p {
     margin-top: 0;
     text-align: center;
 }
 
-.send-email form {
+.new-ingredient-form-container p {
+    margin: 1rem 0;
+}
+
+
+.send-email-container form {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
 }
 
-.send-email input {
+.send-email-container input {
     padding: 0.5rem;
     border: 1px solid #ddd;
     border-radius: 5px;
 }
 
-.send-email button {
+.send-email-container button {
     padding: 0.5rem;
     background-color: #500110;
     color: white;
@@ -255,26 +288,26 @@ aside {
     cursor: pointer;
 }
 
-.send-email button:hover {
+.send-email-container button:hover {
     background-color: #CA8787;
 }
 
-.related-recipes ul {
+.related-recipes-container ul {
     padding: 0;
     list-style: none;
     text-align: center;
 }
 
-.related-recipes li {
+.related-recipes-container li {
     margin: 0.5rem 0;
 }
 
-.related-recipes a {
+.related-recipes-container a {
     color: #500110;
 
 }
 
-.related-recipes a:hover {
+.related-recipes-container a:hover {
     color: #CA8787;
 }
 
