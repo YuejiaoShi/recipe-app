@@ -135,9 +135,9 @@ main {
 }
 
 .sort-by {
-  width: px;
   color: #706f6f;
-  border: 0;
+  border: 2px solid #c79696;
+  border-radius: 5px;
 }
 
 .send-email-container {
