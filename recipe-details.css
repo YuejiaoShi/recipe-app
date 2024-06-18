@@ -52,8 +52,6 @@ header {
     background-color: #500110;
 }
 
-
-
 .navbar {
     background-color: #CA8787;
 }
@@ -90,16 +88,16 @@ header {
     padding: 0.2rem 0.3rem 0.2rem 0.3rem;
     margin: 0;
     border-radius: 12px;
-  }
-  
-  #search-icon {
+}
+
+#search-icon {
     display: inline-block;
     border: 0;
     padding: 0.2rem 0.45rem 0.2rem 0.45rem;
     margin: 0;
     background-color: white;
     border-radius: 12px;
-  }
+}
 
 footer .bg-secondary {
     background-color: #CA8787 !important;
@@ -138,17 +136,12 @@ footer .cizgi {
     .related-recipes-container {
         order: 3;
     }
-
-
 }
-
 
 main {
     display: flex;
     justify-content: center;
     padding: 2rem;
-    justify-content: center;
-
     margin: 0 auto;
 }
 
@@ -165,7 +158,6 @@ main {
     margin: 1rem 0;
     align-items: center;
 }
-
 
 .page-timer div {
     display: inline-block;
@@ -229,11 +221,9 @@ main {
     margin-left: 1rem;
 }
 
-
 #preparation ul {
     padding-left: 1rem;
 }
-
 
 .sidebar {
     flex: 1;
@@ -310,11 +300,9 @@ main {
     color: #CA8787;
 }
 
-
 #new-recipe-form label #new-ingredient-form label #new-ingredient-form label {
     font-weight: bold;
 }
-
 
 #new-recipe-form input[type="text"],
 #new-recipe-form input[type="url"],

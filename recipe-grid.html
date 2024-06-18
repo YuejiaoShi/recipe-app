@@ -59,12 +59,14 @@
     <main>
         <section id="recipe-container" class="recipe-container">
             <section id="recipe-grid-article" class="recipe-grid-article">
-                <select id="sort-by" class="sort-by">
-                    <option value="" disabled selected hidden>Sort By ...</option>
-                    <option value="by-increasing-ingredient-amount">By Increasing Ingredient Amount</option>
-                    <option value="by-decreasing-ingredient-amount">By Decreasing Ingredient Amount</option>
-                    <!-- more options in the future -->
-                </select>
+                <div class="sort-container">
+                    <label class="sort-by-label">Sort By: </label>
+                    <select id="sort-by" class="sort-by">
+                        <option value="by-increasing-ingredient-amount">Ingredients: Min-Max</option>
+                        <option value="by-decreasing-ingredient-amount">Ingredients: Max-Min</option>
+                        <!-- more options in the future -->
+                    </select>
+                </div>
 
                 <div id="recipe-grid-container" class="recipe-grid-container"></div>
 
