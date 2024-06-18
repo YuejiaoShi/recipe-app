@@ -130,11 +130,11 @@ footer .cizgi {
     }
 
     .send-email-container {
-        order: 2;
+        order: 3;
     }
 
     .related-recipes-container {
-        order: 3;
+        order: 2;
     }
 }
 
@@ -252,7 +252,8 @@ main {
 }
 
 .new-ingredient-form-container p {
-    margin: 1rem 0;
+    margin:0 0 1rem 0;
+    color: #807f7f;
 }
 
 
