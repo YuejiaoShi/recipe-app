@@ -57,8 +57,8 @@
 
 
     <main>
-        <section id="recipe-container">
-            <article id="recipe-grid-article" class="recipe-grid-article">
+        <section id="recipe-container" class="recipe-container">
+            <section id="recipe-grid-article" class="recipe-grid-article">
                 <select id="sort-by" class="sort-by">
                     <option value="" disabled selected hidden>Sort By ...</option>
                     <option value="by-increasing-ingredient-amount">By Increasing Ingredient Amount</option>
@@ -69,9 +69,9 @@
                 <div id="recipe-grid-container" class="recipe-grid-container"></div>
 
                 <!-- Recipe grids added from recipeGrid.js -->
-            </article>
-            <aside id="sidebar">
-                <div class="send-email">
+            </section>
+            <section id="sidebar" class="sidebar">
+                <div class="send-email-container" id="send-email-container">
                     <h3>Sign up for our newsletter</h3>
                     <form id="email-form" method="post">
                         <input type="text" name="name" placeholder="Your Name" required>
@@ -79,7 +79,7 @@
                         <button type="submit">Subscribe</button>
                     </form>
                 </div>
-            </aside>
+            </section>
         </section>
     </main>
     <footer>

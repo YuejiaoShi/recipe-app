@@ -15,7 +15,6 @@ header {
   padding: 1rem;
   text-align: center;
   position: sticky;
-  top: 0;
 }
 
 /* -------- Nav Bar -------- */
@@ -129,7 +128,7 @@ main {
   flex-direction: column;
 }
 
-aside {
+.sidebar {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -146,32 +145,32 @@ aside {
   font-size: 16px;
 }
 
-.send-email {
+.send-email-container {
   padding: 20px;
   background-color: #f9f9f9;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  margin-top: 2rem;
+
 }
 
-.send-email h3 {
+.send-email-container h3 {
   margin-top: 0;
   text-align: center;
 }
 
-.send-email form {
+.send-email-container form {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
-.send-email input {
+.send-email-container input {
   padding: 0.5rem;
   border: 1px solid #ddd;
   border-radius: 5px;
 }
 
-.send-email button {
+.send-email-container button {
   padding: 0.5rem;
   background-color: #500110;
   color: white;
@@ -180,7 +179,7 @@ aside {
   cursor: pointer;
 }
 
-.send-email button:hover {
+.send-email-container button:hover {
   background-color: #CA8787;
 }
 
@@ -199,6 +198,8 @@ footer a.text-light:hover {
   text-decoration: none;
 }
 
+/* -------- Footer -------- */
+
 footer .cizgi {
   border-right: 1px solid #500110;
 }
@@ -207,6 +208,13 @@ footer .cizgi {
   footer .cizgi {
     border-right: none;
   }
-}
 
-/* -------- Footer -------- */
+  .recipe-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+}
