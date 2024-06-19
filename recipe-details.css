@@ -219,11 +219,60 @@ main {
 #recipe-ingredients ul {
     list-style: disc;
     margin-left: 1rem;
+    padding: 0;
+}
+
+#recipe-ingredients li {
+    position: relative;
+    margin-left: 1rem;
+}
+
+#recipe-ingredients li::marker {
+    color: #500110;
+    font-size: 1.2rem;
+}
+
+#recipe-ingredients li::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -2rem;
+    height: 100%;
+    width: 0.25rem;
+    background-color: #fae4e4;
 }
 
 #preparation ul {
     padding-left: 1rem;
+    list-style-type: none;
+    position: relative;
+    counter-reset: step-counter;
 }
+
+#preparation li {
+    position: relative;
+    padding-left: 1rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.5rem;
+}
+
+#preparation li::before {
+    content: counter(step-counter);
+    counter-increment: step-counter;
+    width: 1.5rem;
+    height: 1.5rem;
+    text-align: center;
+    line-height: 1.5rem;
+    background-color: #500110;
+    color: white;
+    font-weight: bold;
+    border-radius: 50%;
+    position: absolute;
+    left: -1rem;
+    top: 0;
+}
+
 
 .sidebar {
     flex: 1;
@@ -252,7 +301,7 @@ main {
 }
 
 .new-ingredient-form-container p {
-    margin:0 0 1rem 0;
+    margin: 0 0 1rem 0;
     color: #807f7f;
 }
 
