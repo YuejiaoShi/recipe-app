@@ -104,7 +104,7 @@ function setPreparationSteps(recipe) {
 
 // Add new Ingredients
 function createNewIngredientForm() {
-  const recipes = fetchRecipes();
+  let recipes = fetchRecipes();
   const newIngredientForm = document.getElementById("new-ingredient-form");
   if (newIngredientForm) {
     newIngredientForm.addEventListener("submit", (event) => {
@@ -114,21 +114,30 @@ function createNewIngredientForm() {
         document.getElementById("ingredient-name").value;
       const newIngredientAmount =
         document.getElementById("ingredient-amount").value;
+      const recipeTitleDisplayed = document
+        .getElementById("recipe-title")
+        .textContent.trim();
 
       if (!newIngredientName) {
         alert("Please provide ingredient name.");
         return;
       }
 
-      const currentRecipe = recipes[recipes.length - 1];
+      const currentRecipe = recipes.find(
+        (recipe) => recipe.title === recipeTitleDisplayed
+      );
+      const currentIndex = recipes.findIndex(
+        (recipe) => recipe.title === recipeTitleDisplayed
+      );
       currentRecipe.ingredients.push({
         NAME: newIngredientName,
         AMOUNT: newIngredientAmount,
       });
-
+      recipes[currentIndex] = currentRecipe;
       document.getElementById("ingredient-name").value = "";
       document.getElementById("ingredient-amount").value = "";
 
+      storeRecipes(recipes);
       setIngredients(currentRecipe);
     });
   } else {
