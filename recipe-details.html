@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="recipe-details.css">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playwrite+AU+SA:wght@100..400&family=Playwrite+AU+TAS:wght@100..400&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -75,7 +78,8 @@
                 <img id="recipe-image" src="#" alt="Recipe Image Placeholder">
                 <p id="recipe-description"></p>
                 <div id="cooking-timer">
-                    <label for="cooking-timer-input">Enter cooking timer (minutes):</label>
+                    <img class="cooking-timer-icon" src="https://cdn-icons-png.flaticon.com/512/4101/4101236.png" alt="cooking-timer-icon"/>
+                    <label for="cooking-timer-input">Set cooking timer (minutes):</label>
                     <input type="number" id="cooking-timer-input" min="1" value="10">
                     <span id="cooking-timer-span"></span>
                     <button class="cooking-timer-buttons" id="start-button">Start</button>
@@ -97,25 +101,25 @@
                 </div>
 
                 <div id="new-recipe-form-container" class="new-recipe-form-container">
-                    <h2>Add New Recipe</h2>
+                    <h3>Add New Recipe</h3>
                     <form id="new-recipe-form">
-                        <label for="title">Title:</label><br>
-                        <input type="text" id="title" name="title" required><br><br>
+                        <label for="title">Title:</label>
+                        <input type="text" id="title" name="title" required>
 
-                        <label for="image-url">Image URL:</label><br>
-                        <input type="url" id="image-url" name="image-url" required><br><br>
+                        <label for="image-url">Image URL:</label>
+                        <input type="url" id="image-url" name="image-url" required>
 
-                        <label for="description">Description:</label><br>
-                        <textarea id="description" name="description" rows="3" cols="50" required></textarea><br><br>
+                        <label for="description">Description:</label>
+                        <textarea id="description" name="description" rows="3" cols="50" required></textarea>
 
-                        <label for="ingredients">Ingredients (minimum 5):</label><br>
+                        <label for="ingredients">Ingredients (minimum 5):</label>
                         <textarea id="ingredients" name="ingredients" rows="5" cols="50"
-                            placeholder="Please use 'Ingredient Name: Amount' format. Hit enter before writing another ingredient"
-                            required></textarea><br><br>
+                            placeholder="Please use 'Ingredient Name: Amount' format. Each ingredient should be on a separate line."
+                            required></textarea>
 
-                        <label for="preparation-steps">Preparation Steps:</label><br>
+                        <label for="preparation-steps">Preparation Steps:</label>
                         <textarea id="preparation-steps" name="preparation-steps" rows="3" cols="50"
-                            required></textarea><br><br>
+                            required></textarea>
 
                         <button type="submit">Add Recipe</button>
                     </form>
@@ -154,19 +158,19 @@
         </section>
     </main>
 
-    <footer>
+    <footer id="footer">
         <div class="jumbotron jumbotron-fluid bg-secondary p-4 mt-5 mb-0">
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 cizgi">
                         <div class="card bg-secondary border-0">
                             <div class="card-body text-light text-center">
-                                <h5 class="card-title text-white display-4" style="font-size:30px">Recipestic</h5>
-                                <p class="d-inline lead">Recipestic © 2024
-                                </p>
+                                <h5 class="card-title text-white display-4" style="font-size:23px;font-weight:bold;">
+                                    Recipestic Headquarter</h5>
+                                <p>Danneskiold-Samsøes Allé 41,<br> 1434 København K.</p>
+
                                 <p>
                                 </p>
-                                <p>Danneskiold-Samsøes Allé 41, 1434 København K.</p>
                             </div>
                         </div>
                     </div>
@@ -174,10 +178,11 @@
                     <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 cizgi">
                         <div class="card bg-secondary border-0">
                             <div class="card-body text-center">
-                                <h5 class="card-title text-white display-4" style="font-size:30px">Contact Me</h5>
-                                <a class="text-light d-block lead" style="margin-left: -20px" href="#"><i
+                                <h5 class="card-title text-white display-4" style="font-size:23px;font-weight:bold;">
+                                    Contact us</h5>
+                                <a class="text-light d-block" style="margin-left: -20px" href="#"><i
                                         class="fa fa-phone mr-2"></i>+45 00000000</a>
-                                <a class="text-light d-block lead" href="#"><i
+                                <a class="text-light d-block" href="#"><i
                                         class="fa fa-envelope mr-2"></i>admin@recipestic.com</a>
                             </div>
                         </div>
@@ -186,11 +191,14 @@
                     <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
                         <div class="card bg-secondary border-0">
                             <div class="card-body text-center">
-                                <h5 class="card-title text-white display-4" style="font-size:30px">Social Media</h5>
+                                <h5 class="card-title text-white display-4" style="font-size:23px;font-weight:bold;">
+                                    Social Media</h5>
                                 <a class="text-light" href="#"><i class="fab fa-facebook-square fa-fw fa-2x"></i></a>
                                 <a class="text-light" href="#"><i class="fab fa-twitter-square fa-fw fa-2x"></i></a>
                                 <a class="text-light" href="#"><i class="fab fa-instagram fa-fw fa-2x"></i></a>
                                 <a class="text-light" href="#"><i class="fab fa-linkedin fa-fw fa-2x"></i></a>
+                                <p style="color:white">© 2024 Recipestic
+                                </p>
                             </div>
                         </div>
                     </div>

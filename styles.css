@@ -9,12 +9,26 @@ body {
     justify-content: space-between;
 }
 
+main {
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+    margin: 0 auto;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+
 .hide {
     display: none;
 }
 
+header h1 {
+    font-family: "Playwrite AU TAS", cursive;
+    margin-bottom: 1rem;
+}
+
 header {
     background-color: #500110;
+    font-family: Copperplate, Papyrus, fantasy;
     color: white;
     padding: 1rem;
     text-align: center;
@@ -23,7 +37,12 @@ header {
 .instructions {
     color: #500110;
     margin-bottom: 10px;
-    font-size: large;
+}
+
+/* nav bar area */
+nav {
+    font-family: "Noto Sans", "Arial", sans-serif;
+    font-size: 1.2rem;
 }
 
 .navbar {
@@ -62,16 +81,23 @@ header {
     padding: 0.2rem 0.3rem 0.2rem 0.3rem;
     margin: 0;
     border-radius: 12px;
-  }
-  
-  #search-icon {
+}
+
+#search-icon {
     display: inline-block;
     border: 0;
     padding: 0.2rem 0.45rem 0.2rem 0.45rem;
     margin: 0;
     background-color: white;
     border-radius: 12px;
-  }
+}
+
+/* nav bar area */
+
+/* footer area */
+footer {
+    font-size: 14px;
+}
 
 footer .bg-secondary {
     background-color: #CA8787 !important;
@@ -85,6 +111,8 @@ footer a.text-light:hover {
 footer .cizgi {
     border-right: 1px solid #500110;
 }
+
+/* footer area */
 
 @media (max-width: 992px) {
     footer .cizgi {
@@ -100,11 +128,11 @@ footer .cizgi {
     }
 }
 
-main {
-    display: flex;
-    justify-content: center;
-    padding: 2rem;
-    margin: 0 auto;
+nav,
+footer,
+.sidebar,
+.new-recipe-form-container {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 #recipe-container {
@@ -215,6 +243,10 @@ main {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
+.new-recipe-form-container {
+    margin: 1.5rem
+}
+
 .send-email-container h3,
 .related-recipes-container h3,
 .new-recipe-form-container h3,
@@ -243,6 +275,7 @@ main {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    justify-self: end;
 }
 
 .send-email-container button:hover {
@@ -272,6 +305,14 @@ main {
     font-weight: bold;
 }
 
+#new-recipe-form {
+    display: flex;
+    flex-direction: column;
+}
+
+#new-recipe-form label {
+    margin-bottom: 2px;
+}
 
 #new-recipe-form input[type="text"],
 #new-recipe-form input[type="url"],
@@ -280,8 +321,8 @@ main {
 #new-ingredient-form input[type="url"],
 #new-ingredient-form textarea {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
+    padding: 5px;
+    margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
