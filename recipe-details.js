@@ -19,6 +19,7 @@ function initializePage(recipes) {
   const recipe = allRecipes.find((r) => r.id === recipeId);
   if (recipe) {
     displayRecipe(recipe);
+    displayRelatedRecipes(recipe, allRecipes);
   } else {
     alert("Recipe not found");
   }
@@ -346,5 +347,49 @@ function setCookingTimer() {
     cookingTimerSpan.textContent = `Time Remaining: ${minutes}:${
       displaySeconds < 10 ? "0" : ""
     }${displaySeconds}`;
+  }
+}
+
+// Display related recipes
+function getSharedIngredientCount(recipe, currentRecipe) {
+  return recipe.ingredients.filter((ingredient) =>
+    currentRecipe.ingredients.some(
+      (currentIngredient) => ingredient.NAME === currentIngredient.NAME
+    )
+  ).length;
+}
+
+function displayRelatedRecipes(currentRecipe, allRecipes) {
+  const relatedRecipesContainer = document.getElementById(
+    "related-recipes-container"
+  );
+  if (!relatedRecipesContainer) {
+    console.error("Element #related-recipes-container not found");
+    return;
+  }
+
+  const relatedRecipes = allRecipes
+    .map((recipe) => ({
+      recipe,
+      sharedCount: getSharedIngredientCount(recipe, currentRecipe),
+    }))
+    .filter((item) => item.recipe.id !== currentRecipe.id)
+    .sort((a, b) => b.sharedCount - a.sharedCount)
+    .slice(0, 3)
+    .map((item) => item.recipe);
+
+  const relatedRecipesList = relatedRecipesContainer.querySelector("ul");
+  if (relatedRecipesList) {
+    relatedRecipesList.innerHTML = "";
+    relatedRecipes.forEach((recipe) => {
+      const li = document.createElement("li");
+      const a = document.createElement("a");
+      a.href = `?id=${recipe.id}`;
+      a.textContent = recipe.title;
+      li.appendChild(a);
+      relatedRecipesList.appendChild(li);
+    });
+  } else {
+    console.error("Element #related-recipes-container ul not found");
   }
 }
