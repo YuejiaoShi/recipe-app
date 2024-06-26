@@ -173,7 +173,7 @@ footer .cizgi {
 .page-timer {
     border: 2px solid #500110;
     border-radius: 10px;
-    width: 225px;
+    width: 240px;
     height: 50px;
     text-align: center;
     display: flex;
@@ -187,17 +187,17 @@ footer .cizgi {
 .page-timer div {
     display: inline-block;
     font-size: 18px;
-    align-items: center;
+    /* align-items: center; */
 }
 
 .page-timer-text {
-    margin-left: 1.1rem
+    margin-left: 0.8rem
 }
 
 #time-spent-on-page {
     font-weight: bold;
     color: #500110;
-    margin-right: 1.1rem;
+    margin-right: 0.8rem;
     display: inline-block;
 }
 
