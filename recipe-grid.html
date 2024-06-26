@@ -5,9 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recipe Grids</title>
-    <link rel="stylesheet" href="recipes-grid.css">
+    <link rel="stylesheet" href="recipe-grid.css">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playwrite+AU+SA:wght@100..400&family=Playwrite+AU+TAS:wght@100..400&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -19,18 +22,22 @@
         <div class="container">
             <a class="navbar-brand text-white" href="#" id="nav-home"><i class="fas fa-hamburger"></i> Recipestic</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nvbCollapse"
-                aria-controls="nvbCollapse">
+                aria-controls="nvbCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
+
             <div class="collapse navbar-collapse" id="nvbCollapse">
+
                 <ul class="navbar-nav ml-auto">
-                    <form action="Search" class="search-form" id="search-form" role="search">
+                    <form action="Search" class="search-form form-inline my-2 my-lg-0" id="search-form" role="search">
                         <div id="search-wrapper">
                             <input type="text" id="search-input" class="search-input" placeholder=" Search Recipes..."
                                 required>
                             <button id="search-icon"><i class="fa fa-search" aria-hidden="true"></i></button>
                         </div>
                     </form>
+
                     <li class="nav-item pl-1">
                         <a class="nav-link" href="#" id="nav-recipes"><i
                                 class="fa fa-th-list fa-fw mr-1"></i>Recipes</a>
@@ -42,30 +49,33 @@
                         <a class="nav-link" href="#"><i class="fa fa-info-circle fa-fw mr-1"></i>About</a>
                     </li>
                     <li class="nav-item pl-1">
-                        <a class="nav-link" href="#"><i class="fa fa-phone fa-fw fa-rotate-180 mr-1"></i>Contact</a>
+                        <a class="nav-link" href="#footer"><i
+                                class="fa fa-phone fa-fw fa-rotate-180 mr-1"></i>Contact</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-
     <main>
-        <section id="recipe-container">
-            <article id="recipe-grid-article" class="recipe-grid-article">
-                <select id="sort-by" class="sort-by">
-                    <option value="" disabled selected hidden>Sort By ...</option>
-                    <option value="by-increasing-ingredient-amount">By Increasing Ingredient Amount</option>
-                    <option value="by-decreasing-ingredient-amount">By Decreasing Ingredient Amount</option>
-                    <!-- more options in the future -->
-                </select>
+        <section id="recipe-container" class="recipe-container">
+            <section id="recipe-grid-article" class="recipe-grid-article">
+                <div class="sort-container">
+                    <label class="sort-by-label">Sort By: </label>
+                    <select id="sort-by" class="sort-by">
+                        <option value="">Select</option>
+                        <option value="by-increasing-ingredient-amount">Ingredients: Min-Max</option>
+                        <option value="by-decreasing-ingredient-amount">Ingredients: Max-Min</option>
+                        <!-- more options in the future -->
+                    </select>
+                </div>
 
                 <div id="recipe-grid-container" class="recipe-grid-container"></div>
 
                 <!-- Recipe grids added from recipeGrid.js -->
-            </article>
-            <aside id="sidebar">
-                <div class="send-email">
+            </section>
+            <section id="sidebar" class="sidebar">
+                <div class="send-email-container" id="send-email-container">
                     <h3>Sign up for our newsletter</h3>
                     <form id="email-form" method="post">
                         <input type="text" name="name" placeholder="Your Name" required>
@@ -73,22 +83,22 @@
                         <button type="submit">Subscribe</button>
                     </form>
                 </div>
-            </aside>
+            </section>
         </section>
     </main>
-    <footer>
+    <footer id="footer">
         <div class="jumbotron jumbotron-fluid bg-secondary p-4 mt-5 mb-0">
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 cizgi">
                         <div class="card bg-secondary border-0">
                             <div class="card-body text-light text-center">
-                                <h5 class="card-title text-white display-4" style="font-size:30px">Recipestic</h5>
-                                <p class="d-inline lead">Recipestic © 2024
-                                </p>
+                                <h5 class="card-title text-white display-4" style="font-size:23px;font-weight:bold;">
+                                    Recipestic Headquarter</h5>
+                                <p>Danneskiold-Samsøes Allé 41,<br> 1434 København K.</p>
+
                                 <p>
                                 </p>
-                                <p>Danneskiold-Samsøes Allé 41, 1434 København K.</p>
                             </div>
                         </div>
                     </div>
@@ -96,10 +106,11 @@
                     <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 cizgi">
                         <div class="card bg-secondary border-0">
                             <div class="card-body text-center">
-                                <h5 class="card-title text-white display-4" style="font-size:30px">Contact Me</h5>
-                                <a class="text-light d-block lead" style="margin-left: -20px" href="#"><i
+                                <h5 class="card-title text-white display-4" style="font-size:23px;font-weight:bold;">
+                                    Contact us</h5>
+                                <a class="text-light d-block" style="margin-left: -20px" href="#"><i
                                         class="fa fa-phone mr-2"></i>+45 00000000</a>
-                                <a class="text-light d-block lead" href="#"><i
+                                <a class="text-light d-block" href="#"><i
                                         class="fa fa-envelope mr-2"></i>admin@recipestic.com</a>
                             </div>
                         </div>
@@ -108,11 +119,14 @@
                     <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
                         <div class="card bg-secondary border-0">
                             <div class="card-body text-center">
-                                <h5 class="card-title text-white display-4" style="font-size:30px">Social Media</h5>
+                                <h5 class="card-title text-white display-4" style="font-size:23px;font-weight:bold;">
+                                    Social Media</h5>
                                 <a class="text-light" href="#"><i class="fab fa-facebook-square fa-fw fa-2x"></i></a>
                                 <a class="text-light" href="#"><i class="fab fa-twitter-square fa-fw fa-2x"></i></a>
                                 <a class="text-light" href="#"><i class="fab fa-instagram fa-fw fa-2x"></i></a>
                                 <a class="text-light" href="#"><i class="fab fa-linkedin fa-fw fa-2x"></i></a>
+                                <p style="color:white">© 2024 Recipestic
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -120,8 +134,9 @@
             </div>
         </div>
     </footer>
-    <!-- <script src="recipes-list.js"></script> -->
     <script type="module" src="recipe-grid.js"></script>
+    <script src=" https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
 

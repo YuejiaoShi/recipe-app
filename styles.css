@@ -9,12 +9,26 @@ body {
     justify-content: space-between;
 }
 
+main {
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+    margin: 0 auto;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+
 .hide {
     display: none;
 }
 
+header h1 {
+    font-family: "Playwrite AU TAS", cursive;
+    margin-bottom: 1rem;
+}
+
 header {
     background-color: #500110;
+    font-family: Copperplate, Papyrus, fantasy;
     color: white;
     padding: 1rem;
     text-align: center;
@@ -23,7 +37,12 @@ header {
 .instructions {
     color: #500110;
     margin-bottom: 10px;
-    font-size: large;
+}
+
+/* nav bar area */
+nav {
+    font-family: "Noto Sans", "Arial", sans-serif;
+    font-size: 1.2rem;
 }
 
 .navbar {
@@ -34,6 +53,13 @@ header {
     color: #fff;
 }
 
+.navbar-toggler {
+    background-color: #fff !important;
+}
+
+.navbar-toggler-icon {
+    background-image: url('data:image/svg+xml;charset=utf8,<svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path stroke="grey" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"/></svg>') ! important;
+}
 
 .navbar .navbar-nav .nav-link:hover {
     color: #fbc531;
@@ -52,18 +78,25 @@ header {
 .search-input {
     background-color: white;
     border: 0;
-    padding: 0.1rem 0.3rem 0.1rem 0.3rem;
+    padding: 0.2rem 0.3rem 0.2rem 0.3rem;
     margin: 0;
-    border-radius: 10px;
+    border-radius: 12px;
 }
 
 #search-icon {
     display: inline-block;
     border: 0;
-    padding: 0.1rem 0.4rem 0.1rem 0.4rem;
+    padding: 0.2rem 0.45rem 0.2rem 0.45rem;
     margin: 0;
     background-color: white;
-    border-radius: 10px;
+    border-radius: 12px;
+}
+
+/* nav bar area */
+
+/* footer area */
+footer {
+    font-size: 14px;
 }
 
 footer .bg-secondary {
@@ -79,20 +112,27 @@ footer .cizgi {
     border-right: 1px solid #500110;
 }
 
+/* footer area */
+
 @media (max-width: 992px) {
     footer .cizgi {
         border-right: none;
     }
+
+    .recipe-container {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-items: center;
+    }
 }
 
-
-main {
-    display: flex;
-    justify-content: center;
-    padding: 2rem;
-    justify-content: center;
-    min-width: 1264px;
-    margin: 0 auto;
+nav,
+footer,
+.sidebar,
+.new-recipe-form-container {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 #recipe-container {
@@ -131,89 +171,148 @@ main {
 #recipe-ingredients ul {
     list-style: disc;
     margin-left: 1rem;
+    padding: 0;
 }
 
+#recipe-ingredients li {
+    position: relative;
+    margin-left: 1rem;
+}
+
+#recipe-ingredients li::marker {
+    color: #500110;
+    font-size: 1.2rem;
+}
+
+#recipe-ingredients li::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -2rem;
+    height: 100%;
+    width: 0.25rem;
+    background-color: #fae4e4;
+}
 
 #preparation ul {
     padding-left: 1rem;
+    list-style-type: none;
+    position: relative;
+    counter-reset: step-counter;
+}
+
+#preparation li {
+    position: relative;
+    padding-left: 1rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.5rem;
+}
+
+#preparation li::before {
+    content: counter(step-counter);
+    counter-increment: step-counter;
+    width: 1.5rem;
+    height: 1.5rem;
+    text-align: center;
+    line-height: 1.5rem;
+    background-color: #500110;
+    color: white;
+    font-weight: bold;
+    border-radius: 50%;
+    position: absolute;
+    left: -1rem;
+    top: 0;
 }
 
 
-aside {
+.sidebar {
     flex: 1;
     display: flex;
     flex-direction: column;
     gap: 2rem;
 }
 
-.send-email,
-.related-recipes,
-#new-recipe-form,
-#new-ingredient-form {
+.send-email-container,
+.related-recipes-container,
+.new-recipe-form-container,
+.new-ingredient-form-container {
     padding: 20px;
     background-color: #f9f9f9;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    margin-top: 2rem;
 }
 
-.send-email h3,
-.related-recipes h3,
-#new-recipe-form h3,
-#new-ingredient-form h3 {
+.new-recipe-form-container {
+    margin: 1.5rem
+}
+
+.send-email-container h3,
+.related-recipes-container h3,
+.new-recipe-form-container h3,
+.new-ingredient-form-container h3,
+.new-ingredient-form-container p {
     margin-top: 0;
     text-align: center;
 }
 
-.send-email form {
+.send-email-container form {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
 }
 
-.send-email input {
+.send-email-container input {
     padding: 0.5rem;
     border: 1px solid #ddd;
     border-radius: 5px;
 }
 
-.send-email button {
+.send-email-container button {
     padding: 0.5rem;
     background-color: #500110;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    justify-self: end;
 }
 
-.send-email button:hover {
+.send-email-container button:hover {
     background-color: #CA8787;
 }
 
-.related-recipes ul {
+.related-recipes-container ul {
     padding: 0;
     list-style: none;
     text-align: center;
 }
 
-.related-recipes li {
+.related-recipes-container li {
     margin: 0.5rem 0;
 }
 
-.related-recipes a {
+.related-recipes-container a {
     color: #500110;
 
 }
 
-.related-recipes a:hover {
+.related-recipes-container a:hover {
     color: #CA8787;
 }
-
 
 #new-recipe-form label #new-ingredient-form label #new-ingredient-form label {
     font-weight: bold;
 }
 
+#new-recipe-form {
+    display: flex;
+    flex-direction: column;
+}
+
+#new-recipe-form label {
+    margin-bottom: 2px;
+}
 
 #new-recipe-form input[type="text"],
 #new-recipe-form input[type="url"],
@@ -222,8 +321,8 @@ aside {
 #new-ingredient-form input[type="url"],
 #new-ingredient-form textarea {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
+    padding: 5px;
+    margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;

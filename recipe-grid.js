@@ -87,9 +87,14 @@ function setSorting() {
   function handleSort() {
     const sortSelect = document.getElementById("sort-by");
     const selectedOption = sortSelect.value;
-
-    const recipes = fetchRecipes();
-
+    let recipes = fetchRecipes();
+    const filteredRecipesStr = localStorage.getItem("filteredRecipes");
+    if (filteredRecipesStr) {
+      const filteredRecipes = JSON.parse(filteredRecipesStr);
+      if (recipes !== filteredRecipes) {
+        recipes = filteredRecipes;
+      }
+    }
     const sortedRecipes = sortRecipes(selectedOption, recipes);
     createRecipeGrid(sortedRecipes);
   }
