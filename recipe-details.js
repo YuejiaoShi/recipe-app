@@ -354,7 +354,8 @@ function setCookingTimer() {
 function getSharedIngredientCount(recipe, currentRecipe) {
   return recipe.ingredients.filter((ingredient) =>
     currentRecipe.ingredients.some(
-      (currentIngredient) => ingredient.NAME === currentIngredient.NAME
+      (currentIngredient) =>
+        ingredient.NAME.toLowerCase() === currentIngredient.NAME.toLowerCase()
     )
   ).length;
 }
