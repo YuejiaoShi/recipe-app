@@ -164,7 +164,7 @@ function createNewRecipeForm() {
       const ingredientsInput = document
         .getElementById("ingredients")
         .value.split("\n");
-      const preparationSteps = document
+      const preparationStepsInput = document
         .getElementById("preparation-steps")
         .value.split("\n");
 
@@ -175,6 +175,8 @@ function createNewRecipeForm() {
 
       const ingredients = [];
       ingredientsInput.forEach((ingredientLine) => {
+        if (ingredientLine.trim() === "") return;
+
         const parts = ingredientLine.split(":");
 
         if (parts.length !== 2) {
@@ -189,6 +191,12 @@ function createNewRecipeForm() {
 
         ingredients.push({ NAME: name, AMOUNT: amount });
       });
+      const preparationSteps = [];
+      preparationStepsInput.forEach((preparationStepLine) => {
+        if (preparationStepLine.trim() === "") return;
+        preparationSteps.push(preparationStepLine);
+      });
+
       const recipes = fetchRecipes();
       const newRecipeData = {
         id: recipes.length + 1,
