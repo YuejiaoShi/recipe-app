@@ -212,14 +212,9 @@ function createNewRecipeForm() {
         };
         recipes.push(newRecipe);
         storeRecipes(recipes);
-        displayRecipe(newRecipe);
+        window.location.assign(`recipe-details.html?id=${newRecipe.id}`);
       }
-
-      document.getElementById("title").value = "";
-      document.getElementById("image-url").value = "";
-      document.getElementById("description").value = "";
-      document.getElementById("ingredients").value = "";
-      document.getElementById("preparation-steps").value = "";
+      newRecipeForm.reset();
     });
   }
 }
