@@ -19,6 +19,7 @@ function initializePage(recipes) {
   const recipe = allRecipes.find((r) => r.id === recipeId);
   if (recipe) {
     displayRecipe(recipe);
+    displayRelatedRecipes(recipe, allRecipes);
   } else {
     alert("Recipe not found");
   }
@@ -163,7 +164,7 @@ function createNewRecipeForm() {
       const ingredientsInput = document
         .getElementById("ingredients")
         .value.split("\n");
-      const preparationSteps = document
+      const preparationStepsInput = document
         .getElementById("preparation-steps")
         .value.split("\n");
 
@@ -174,6 +175,8 @@ function createNewRecipeForm() {
 
       const ingredients = [];
       ingredientsInput.forEach((ingredientLine) => {
+        if (ingredientLine.trim() === "") return;
+
         const parts = ingredientLine.split(":");
 
         if (parts.length !== 2) {
@@ -188,6 +191,12 @@ function createNewRecipeForm() {
 
         ingredients.push({ NAME: name, AMOUNT: amount });
       });
+      const preparationSteps = [];
+      preparationStepsInput.forEach((preparationStepLine) => {
+        if (preparationStepLine.trim() === "") return;
+        preparationSteps.push(preparationStepLine);
+      });
+
       const recipes = fetchRecipes();
       const newRecipeData = {
         id: recipes.length + 1,
@@ -211,14 +220,9 @@ function createNewRecipeForm() {
         };
         recipes.push(newRecipe);
         storeRecipes(recipes);
-        displayRecipe(newRecipe);
+        window.location.assign(`recipe-details.html?id=${newRecipe.id}`);
       }
-
-      document.getElementById("title").value = "";
-      document.getElementById("image-url").value = "";
-      document.getElementById("description").value = "";
-      document.getElementById("ingredients").value = "";
-      document.getElementById("preparation-steps").value = "";
+      newRecipeForm.reset();
     });
   }
 }
@@ -346,5 +350,50 @@ function setCookingTimer() {
     cookingTimerSpan.textContent = `Time Remaining: ${minutes}:${
       displaySeconds < 10 ? "0" : ""
     }${displaySeconds}`;
+  }
+}
+
+// Display related recipes
+function getSharedIngredientCount(recipe, currentRecipe) {
+  return recipe.ingredients.filter((ingredient) =>
+    currentRecipe.ingredients.some(
+      (currentIngredient) =>
+        ingredient.NAME.toLowerCase() === currentIngredient.NAME.toLowerCase()
+    )
+  ).length;
+}
+
+function displayRelatedRecipes(currentRecipe, allRecipes) {
+  const relatedRecipesContainer = document.getElementById(
+    "related-recipes-container"
+  );
+  if (!relatedRecipesContainer) {
+    console.error("Element #related-recipes-container not found");
+    return;
+  }
+
+  const relatedRecipes = allRecipes
+    .map((recipe) => ({
+      recipe,
+      sharedCount: getSharedIngredientCount(recipe, currentRecipe),
+    }))
+    .filter((item) => item.recipe.id !== currentRecipe.id)
+    .sort((a, b) => b.sharedCount - a.sharedCount)
+    .slice(0, 3)
+    .map((item) => item.recipe);
+
+  const relatedRecipesList = relatedRecipesContainer.querySelector("ul");
+  if (relatedRecipesList) {
+    relatedRecipesList.innerHTML = "";
+    relatedRecipes.forEach((recipe) => {
+      const li = document.createElement("li");
+      const a = document.createElement("a");
+      a.href = `?id=${recipe.id}`;
+      a.textContent = recipe.title;
+      li.appendChild(a);
+      relatedRecipesList.appendChild(li);
+    });
+  } else {
+    console.error("Element #related-recipes-container ul not found");
   }
 }
