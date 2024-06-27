@@ -12,9 +12,10 @@ body {
 main {
     display: flex;
     justify-content: center;
-    padding: 2rem;
+    padding-top: 2rem;
     margin: 0 auto;
     font-family: "Comic Sans MS", cursive;
+    width: 80%;
 }
 
 header h1 {
@@ -89,8 +90,9 @@ nav {
     text-align: center;
     margin-top: 20px;
 }
-.cooking-timer-icon{
-    width:50px;
+
+.cooking-timer-icon {
+    width: 50px;
 }
 
 #cooking-timer input[type="number"] {
@@ -141,6 +143,7 @@ footer a.text-light:hover {
 footer .cizgi {
     border-right: 1px solid #500110;
 }
+
 /* footer area */
 
 @media (max-width: 992px) {
@@ -305,7 +308,9 @@ footer .cizgi {
     gap: 2rem;
 }
 
-nav, footer, .sidebar,
+nav,
+footer,
+.sidebar,
 .new-recipe-form-container {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
