@@ -15,7 +15,7 @@ main {
     padding-top: 2rem;
     margin: 0 auto;
     font-family: "Comic Sans MS", cursive;
-    width: 80%;
+    max-width: 1200px;
 }
 
 header h1 {
@@ -213,9 +213,8 @@ footer .cizgi {
 
 #recipe-container {
     display: flex;
-    max-width: 1200px;
-    width: 100%;
     gap: 2rem;
+    justify-content: flex-start;
 }
 
 #recipe-details {
