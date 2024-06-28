@@ -10,21 +10,21 @@ Welcome to my recipe-app project! This application is designed to offer a compre
 ## Features
 
 ### Homepage
--**Navigation**: Click on "Recipestic" in the navigation bar to access the homepage. Click on "Recipestic" in the navigation bar to access the homepage.
+**Navigation**: Click on "Recipestic" in the navigation bar to access the homepage. Click on "Recipestic" in the navigation bar to access the homepage.
 - A welcoming interface showing some instructions for this web.
 - Highlighted instructions of the web.
 - A search bar for quick access to specific recipes.
 - Navigation to other sections of the app.
 
 ### Recipe Grid
-- Click on "Recipes" in the navigation bar to access the recipe grid.
+**Navigation**: Click on "Recipes" in the navigation bar to access the recipe grid.
 - Displays a grid of recipes with options to sort and search.
 - Filters to narrow down recipes based on categories or ingredients.
 - Sort options to organize recipes by criteria such as popularity, preparation time, or date added.
 - A visually appealing layout for easy browsing.
 
 ### Recipe Details
-- Select a recipe from the recipe grid to view its details.
+**Navigation**: Select a recipe from the recipe grid to view its details.
 - Provides detailed information about the selected recipe, including ingredients, cooking instructions, and cooking timer setter.
 - Detailed ingredient list.
 - Step-by-step cooking instructions.
@@ -35,14 +35,15 @@ Welcome to my recipe-app project! This application is designed to offer a compre
 
 ## Technologies and Techniques Used
 
-- JSON for data storage and manipulation
-- Debugging techniques
-- Function creation and usage
-- Event handling
-- Promises for asynchronous operations
-- XHTTP requests for interacting with APIs
-- Async/Synchronous operations
-- Closures
-- Test-driven development
+- Async/Await for Asynchronous Operations
+- LocalStorage for Data Persistence
+- Dynamic DOM Manipulation for User Interaction
+- Event Handling for User Input
+- Array Methods for Data Manipulation
+- API Interaction including Self-built API
+- Error Handling for Robustness
+- URL Handling for Navigation
+- Modularization for Code Organization
+- Responsive Design for Multi-device Compatibility
 
 Feel free to explore the dynamic features and functionality of this recipe app!
