@@ -10,7 +10,7 @@ Welcome to my recipe-app project! This application is designed to offer a compre
 ## Features
 
 ### Homepage
-- Click on "Recipestic" in the navigation bar to access the homepage.
+-**Navigation**: Click on "Recipestic" in the navigation bar to access the homepage. Click on "Recipestic" in the navigation bar to access the homepage.
 - A welcoming interface showing some instructions for this web.
 - Highlighted instructions of the web.
 - A search bar for quick access to specific recipes.
