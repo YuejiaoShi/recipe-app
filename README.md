@@ -10,14 +10,14 @@ Welcome to my recipe-app project! This application is designed to offer a compre
 ## Features
 
 ### Homepage
-**Navigation**: Click on "Recipestic" in the navigation bar to access the homepage. Click on "Recipestic" in the navigation bar to access the homepage.
+**Navigation**: Click "Recipestic" in the navigation bar to access the homepage. 
 - A welcoming interface showing some instructions for this web.
 - Highlighted instructions of the web.
 - A search bar for quick access to specific recipes.
 - Navigation to other sections of the app.
 
 ### Recipe Grid
-**Navigation**: Click on "Recipes" in the navigation bar to access the recipe grid.
+**Navigation**: Click "Recipes" in the navigation bar to access the recipe grid.
 - Displays a grid of recipes with options to sort and search.
 - Filters to narrow down recipes based on categories or ingredients.
 - Sort options to organize recipes by criteria such as popularity, preparation time, or date added.
@@ -45,5 +45,6 @@ Welcome to my recipe-app project! This application is designed to offer a compre
 - URL Handling for Navigation
 - Modularization for Code Organization
 - Responsive Design for Multi-device Compatibility
+
 
 Feel free to explore the dynamic features and functionality of this recipe app!
